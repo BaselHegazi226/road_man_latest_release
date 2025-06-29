@@ -1,0 +1,22 @@
+للعرض (width)
+4 بكسل → screenWidth * 0.01 (تقريبًا)
+
+8 بكسل → screenWidth * 0.02
+
+12 بكسل → screenWidth * 0.03
+
+16 بكسل → screenWidth * 0.04
+
+24 بكسل → screenWidth * 0.06
+
+للطول (height)
+4 بكسل → screenHeight * 0.005
+
+8 بكسل → screenHeight * 0.01
+
+12 بكسل → screenHeight * 0.015
+
+16 بكسل → screenHeight * 0.02
+
+24 بكسل → screenHeight * 0.03
+

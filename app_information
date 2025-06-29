@@ -1,0 +1,14 @@
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\BaseL HeGaZy\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 09:3A:63:9B:9A:75:EB:5F:99:0D:98:87:68:03:3E:47
+SHA1: 33:10:84:D7:4B:81:12:86:37:C9:70:CD:9F:CF:CF:8C:57:51:1C:CF
+SHA-256: D9:28:22:06:44:80:B6:ED:44:76:33:D1:9C:BF:28:AF:6C:14:7A:52:18:C6:82:60:88:54:9F:0F:E0:80:D4:C2
+Valid until: Saturday, February 20, 2055
+
+Platform  Firebase App Id
+android   1:966075316489:android:2c14ca43b4808ab6e1fbd8
+ios       1:966075316489:ios:a1fdc2c162836463e1fbd8
+windows   1:966075316489:web:fc2a01c95a3ced44e1fbd8
+

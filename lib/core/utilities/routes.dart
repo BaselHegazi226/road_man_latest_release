@@ -1,0 +1,29 @@
+class Routes {
+  static String splashViewId = '/splashViewId';
+  static String splashView2Id = '/splashView2Id';
+  static String onBoardingPageViewId = '/onBoardingPageViewId';
+  static String questionnaireViewId = '/questionnaireViewId';
+  static String signUpViewId = '/SignUpView';
+  static String signInViewId = '/SignInView';
+  static String forgetPasswordViewId = '/ForgetPasswordView';
+  static String profileForgetPasswordViewId = '/profileForgetPasswordViewId';
+  static String resetPasswordViewId = '/resetPasswordViewId';
+  static String verificationEmailViewId = '/verificationEmailViewId';
+  static String verificationOtpViewId = '/verificationOtpViewId';
+  static String mainViewId = '/mainView';
+  static String learningPathViewId = '/learningPathViewId';
+  static String learningPreferencesViewId = '/learningPreferencesViewId';
+  static String lessonViewId = '/lessonViewId';
+  static String quizViewId = '/quizViewId';
+  static String profileViewId = '/profileView';
+  static String aboutAppViewId = '/aboutAppView';
+  static String editProfileViewId = '/editProfileView';
+  static String changePasswordViewId = '/changePasswordViewId';
+  static String settingsViewId = '/settingsView';
+  static String privacyPolicyViewId = '/privacyPolicyView';
+  static String faqViewId = '/faqView';
+  static String jobViewId = '/jobView';
+  static String jobDetailsViewId = '/jobDetailsView';
+  static String favouriteViewId = '/favouriteView';
+  static String notificationJobViewId = '/notificationJobViewId';
+}

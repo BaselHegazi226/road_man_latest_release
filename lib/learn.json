@@ -1,0 +1,864 @@
+{
+  "learningPath": [
+    {
+      "levelNumber": 1,
+      "id": 143,
+      "progressStatus": null,
+      "trackResourceId": 76,
+      "url": "https://www.youtube.com/playlist?list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y",
+      "title": "Javascript from start to professional and Document manipulation",
+      "level": "Intermediate",
+      "language": "Arabic",
+      "typeOfContent": "Visual",
+      "estimatedDuration": 470,
+      "lessons": [
+        {
+          "lessonNumber": 1,
+          "id": 765,
+          "title": "learn javascript [introduction - lecture #1]",
+          "url": "https://www.youtube.com/watch?v=30T6janY0SQ&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=1",
+          "estimatedDuration": 30
+        },
+        {
+          "lessonNumber": 2,
+          "id": 766,
+          "title": "learn javascript [Syntax Variables And Operators - lecture #2]",
+          "url": "https://www.youtube.com/watch?v=KuwEWxUIrDY&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=2",
+          "estimatedDuration": 56
+        },
+        {
+          "lessonNumber": 3,
+          "id": 767,
+          "title": "learn javascript [Functions & Conditions With operators - lecture #3]",
+          "url": "https://www.youtube.com/watch?v=44txTLnvvvw&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=3",
+          "estimatedDuration": 77
+        },
+        {
+          "lessonNumber": 4,
+          "id": 768,
+          "title": "learn javascript [Functions & events - lecture #4]",
+          "url": "https://www.youtube.com/watch?v=59lDN56UDxU&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=4",
+          "estimatedDuration": 68
+        },
+        {
+          "lessonNumber": 5,
+          "id": 769,
+          "title": "learn javascript [Self Invoke & String Methods Part 1 - lecture #5]",
+          "url": "https://www.youtube.com/watch?v=ROZNJMbJDUY&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=5",
+          "estimatedDuration": 62
+        },
+        {
+          "lessonNumber": 6,
+          "id": 770,
+          "title": "learn javascript [String Methods part 2 - lecture #6]",
+          "url": "https://www.youtube.com/watch?v=xbcIzFT3H64&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=6",
+          "estimatedDuration": 55
+        },
+        {
+          "lessonNumber": 7,
+          "id": 771,
+          "title": "learn javascript [String Methods Part 3 - lecture #7]",
+          "url": "https://www.youtube.com/watch?v=ml19S1BENpk&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=7",
+          "estimatedDuration": 45
+        },
+        {
+          "lessonNumber": 8,
+          "id": 772,
+          "title": "learn javascript [Math Methods - lecture #8]",
+          "url": "https://www.youtube.com/watch?v=RV8lK-3-flg&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=8",
+          "estimatedDuration": 13
+        },
+        {
+          "lessonNumber": 9,
+          "id": 773,
+          "title": "learn javascript [Numbers In Deep - lecture #9]",
+          "url": "https://www.youtube.com/watch?v=S1AbUTgNayo&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=9",
+          "estimatedDuration": 64
+        }
+      ],
+      "quiz": {
+        "id": 218,
+        "title": "Quiz For A YouTube playlist for intermediate frontend developers.",
+        "createdAt": "2025-06-17T05:53:45.1563344",
+        "isCompleted": false,
+        "questions": [
+          {
+            "id": 1496,
+            "text": "What is the purpose of using 'Array.map()' in JavaScript?",
+            "answers": [
+              {
+                "id": 5981,
+                "text": "To filter elements from an array based on a condition.",
+                "isCorrect": false
+              },
+              {
+                "id": 5982,
+                "text": "To sort the elements of an array.",
+                "isCorrect": false
+              },
+              {
+                "id": 5983,
+                "text": "To create a new array with the results of calling a provided function on every element in the calling array.",
+                "isCorrect": true
+              },
+              {
+                "id": 5984,
+                "text": "To iterate over an array and modify it directly.",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1497,
+            "text": "Which CSS property is used to control the spacing between lines of text?",
+            "answers": [
+              {
+                "id": 5985,
+                "text": "letter-spacing",
+                "isCorrect": false
+              },
+              {
+                "id": 5986,
+                "text": "text-spacing",
+                "isCorrect": false
+              },
+              {
+                "id": 5987,
+                "text": "line-height",
+                "isCorrect": true
+              },
+              {
+                "id": 5988,
+                "text": "word-spacing",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1498,
+            "text": "What is the purpose of using 'useState' hook in React?",
+            "answers": [
+              {
+                "id": 5989,
+                "text": "To manage state within a functional component.",
+                "isCorrect": true
+              },
+              {
+                "id": 5990,
+                "text": "To define lifecycle methods in React components.",
+                "isCorrect": false
+              },
+              {
+                "id": 5991,
+                "text": "To create reusable UI components.",
+                "isCorrect": false
+              },
+              {
+                "id": 5992,
+                "text": "To handle events in React components.",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1499,
+            "text": "Which of the following is NOT a valid CSS selector?",
+            "answers": [
+              {
+                "id": 5993,
+                "text": "elementName",
+                "isCorrect": false
+              },
+              {
+                "id": 5994,
+                "text": "invalid selector",
+                "isCorrect": true
+              },
+              {
+                "id": 5995,
+                "text": "#myElement",
+                "isCorrect": false
+              },
+              {
+                "id": 5996,
+                "text": ".myClass",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1500,
+            "text": "What is the purpose of using 'useEffect' hook in React?",
+            "answers": [
+              {
+                "id": 5997,
+                "text": "To manage state within a functional component.",
+                "isCorrect": false
+              },
+              {
+                "id": 5998,
+                "text": "To define the render method in a component.",
+                "isCorrect": false
+              },
+              {
+                "id": 5999,
+                "text": "To create reusable UI components.",
+                "isCorrect": false
+              },
+              {
+                "id": 6000,
+                "text": "To perform side effects in functional components.",
+                "isCorrect": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "levelNumber": 1,
+      "id": 143,
+      "progressStatus": null,
+      "trackResourceId": 76,
+      "url": "https://www.youtube.com/playlist?list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y",
+      "title": "Javascript from start to professional and Document manipulation",
+      "level": "Intermediate",
+      "language": "Arabic",
+      "typeOfContent": "Visual",
+      "estimatedDuration": 470,
+      "lessons": [
+        {
+          "lessonNumber": 1,
+          "id": 765,
+          "title": "learn javascript [introduction - lecture #1]",
+          "url": "https://www.youtube.com/watch?v=30T6janY0SQ&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=1",
+          "estimatedDuration": 30
+        },
+        {
+          "lessonNumber": 2,
+          "id": 766,
+          "title": "learn javascript [Syntax Variables And Operators - lecture #2]",
+          "url": "https://www.youtube.com/watch?v=KuwEWxUIrDY&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=2",
+          "estimatedDuration": 56
+        },
+        {
+          "lessonNumber": 3,
+          "id": 767,
+          "title": "learn javascript [Functions & Conditions With operators - lecture #3]",
+          "url": "https://www.youtube.com/watch?v=44txTLnvvvw&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=3",
+          "estimatedDuration": 77
+        },
+        {
+          "lessonNumber": 4,
+          "id": 768,
+          "title": "learn javascript [Functions & events - lecture #4]",
+          "url": "https://www.youtube.com/watch?v=59lDN56UDxU&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=4",
+          "estimatedDuration": 68
+        },
+        {
+          "lessonNumber": 5,
+          "id": 769,
+          "title": "learn javascript [Self Invoke & String Methods Part 1 - lecture #5]",
+          "url": "https://www.youtube.com/watch?v=ROZNJMbJDUY&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=5",
+          "estimatedDuration": 62
+        },
+        {
+          "lessonNumber": 6,
+          "id": 770,
+          "title": "learn javascript [String Methods part 2 - lecture #6]",
+          "url": "https://www.youtube.com/watch?v=xbcIzFT3H64&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=6",
+          "estimatedDuration": 55
+        },
+        {
+          "lessonNumber": 7,
+          "id": 771,
+          "title": "learn javascript [String Methods Part 3 - lecture #7]",
+          "url": "https://www.youtube.com/watch?v=ml19S1BENpk&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=7",
+          "estimatedDuration": 45
+        },
+        {
+          "lessonNumber": 8,
+          "id": 772,
+          "title": "learn javascript [Math Methods - lecture #8]",
+          "url": "https://www.youtube.com/watch?v=RV8lK-3-flg&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=8",
+          "estimatedDuration": 13
+        },
+        {
+          "lessonNumber": 9,
+          "id": 773,
+          "title": "learn javascript [Numbers In Deep - lecture #9]",
+          "url": "https://www.youtube.com/watch?v=S1AbUTgNayo&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=9",
+          "estimatedDuration": 64
+        }
+      ],
+      "quiz": {
+        "id": 218,
+        "title": "Quiz For A YouTube playlist for intermediate frontend developers.",
+        "createdAt": "2025-06-17T05:53:45.1563344",
+        "isCompleted": false,
+        "questions": [
+          {
+            "id": 1496,
+            "text": "What is the purpose of using 'Array.map()' in JavaScript?",
+            "answers": [
+              {
+                "id": 5981,
+                "text": "To filter elements from an array based on a condition.",
+                "isCorrect": false
+              },
+              {
+                "id": 5982,
+                "text": "To sort the elements of an array.",
+                "isCorrect": false
+              },
+              {
+                "id": 5983,
+                "text": "To create a new array with the results of calling a provided function on every element in the calling array.",
+                "isCorrect": true
+              },
+              {
+                "id": 5984,
+                "text": "To iterate over an array and modify it directly.",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1497,
+            "text": "Which CSS property is used to control the spacing between lines of text?",
+            "answers": [
+              {
+                "id": 5985,
+                "text": "letter-spacing",
+                "isCorrect": false
+              },
+              {
+                "id": 5986,
+                "text": "text-spacing",
+                "isCorrect": false
+              },
+              {
+                "id": 5987,
+                "text": "line-height",
+                "isCorrect": true
+              },
+              {
+                "id": 5988,
+                "text": "word-spacing",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1498,
+            "text": "What is the purpose of using 'useState' hook in React?",
+            "answers": [
+              {
+                "id": 5989,
+                "text": "To manage state within a functional component.",
+                "isCorrect": true
+              },
+              {
+                "id": 5990,
+                "text": "To define lifecycle methods in React components.",
+                "isCorrect": false
+              },
+              {
+                "id": 5991,
+                "text": "To create reusable UI components.",
+                "isCorrect": false
+              },
+              {
+                "id": 5992,
+                "text": "To handle events in React components.",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1499,
+            "text": "Which of the following is NOT a valid CSS selector?",
+            "answers": [
+              {
+                "id": 5993,
+                "text": "elementName",
+                "isCorrect": false
+              },
+              {
+                "id": 5994,
+                "text": "invalid selector",
+                "isCorrect": true
+              },
+              {
+                "id": 5995,
+                "text": "#myElement",
+                "isCorrect": false
+              },
+              {
+                "id": 5996,
+                "text": ".myClass",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1500,
+            "text": "What is the purpose of using 'useEffect' hook in React?",
+            "answers": [
+              {
+                "id": 5997,
+                "text": "To manage state within a functional component.",
+                "isCorrect": false
+              },
+              {
+                "id": 5998,
+                "text": "To define the render method in a component.",
+                "isCorrect": false
+              },
+              {
+                "id": 5999,
+                "text": "To create reusable UI components.",
+                "isCorrect": false
+              },
+              {
+                "id": 6000,
+                "text": "To perform side effects in functional components.",
+                "isCorrect": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "levelNumber": 1,
+      "id": 143,
+      "progressStatus": null,
+      "trackResourceId": 76,
+      "url": "https://www.youtube.com/playlist?list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y",
+      "title": "Javascript from start to professional and Document manipulation",
+      "level": "Intermediate",
+      "language": "Arabic",
+      "typeOfContent": "Visual",
+      "estimatedDuration": 470,
+      "lessons": [
+        {
+          "lessonNumber": 1,
+          "id": 765,
+          "title": "learn javascript [introduction - lecture #1]",
+          "url": "https://www.youtube.com/watch?v=30T6janY0SQ&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=1",
+          "estimatedDuration": 30
+        },
+        {
+          "lessonNumber": 2,
+          "id": 766,
+          "title": "learn javascript [Syntax Variables And Operators - lecture #2]",
+          "url": "https://www.youtube.com/watch?v=KuwEWxUIrDY&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=2",
+          "estimatedDuration": 56
+        },
+        {
+          "lessonNumber": 3,
+          "id": 767,
+          "title": "learn javascript [Functions & Conditions With operators - lecture #3]",
+          "url": "https://www.youtube.com/watch?v=44txTLnvvvw&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=3",
+          "estimatedDuration": 77
+        },
+        {
+          "lessonNumber": 4,
+          "id": 768,
+          "title": "learn javascript [Functions & events - lecture #4]",
+          "url": "https://www.youtube.com/watch?v=59lDN56UDxU&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=4",
+          "estimatedDuration": 68
+        },
+        {
+          "lessonNumber": 5,
+          "id": 769,
+          "title": "learn javascript [Self Invoke & String Methods Part 1 - lecture #5]",
+          "url": "https://www.youtube.com/watch?v=ROZNJMbJDUY&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=5",
+          "estimatedDuration": 62
+        },
+        {
+          "lessonNumber": 6,
+          "id": 770,
+          "title": "learn javascript [String Methods part 2 - lecture #6]",
+          "url": "https://www.youtube.com/watch?v=xbcIzFT3H64&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=6",
+          "estimatedDuration": 55
+        },
+        {
+          "lessonNumber": 7,
+          "id": 771,
+          "title": "learn javascript [String Methods Part 3 - lecture #7]",
+          "url": "https://www.youtube.com/watch?v=ml19S1BENpk&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=7",
+          "estimatedDuration": 45
+        },
+        {
+          "lessonNumber": 8,
+          "id": 772,
+          "title": "learn javascript [Math Methods - lecture #8]",
+          "url": "https://www.youtube.com/watch?v=RV8lK-3-flg&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=8",
+          "estimatedDuration": 13
+        },
+        {
+          "lessonNumber": 9,
+          "id": 773,
+          "title": "learn javascript [Numbers In Deep - lecture #9]",
+          "url": "https://www.youtube.com/watch?v=S1AbUTgNayo&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=9",
+          "estimatedDuration": 64
+        }
+      ],
+      "quiz": {
+        "id": 218,
+        "title": "Quiz For A YouTube playlist for intermediate frontend developers.",
+        "createdAt": "2025-06-17T05:53:45.1563344",
+        "isCompleted": false,
+        "questions": [
+          {
+            "id": 1496,
+            "text": "What is the purpose of using 'Array.map()' in JavaScript?",
+            "answers": [
+              {
+                "id": 5981,
+                "text": "To filter elements from an array based on a condition.",
+                "isCorrect": false
+              },
+              {
+                "id": 5982,
+                "text": "To sort the elements of an array.",
+                "isCorrect": false
+              },
+              {
+                "id": 5983,
+                "text": "To create a new array with the results of calling a provided function on every element in the calling array.",
+                "isCorrect": true
+              },
+              {
+                "id": 5984,
+                "text": "To iterate over an array and modify it directly.",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1497,
+            "text": "Which CSS property is used to control the spacing between lines of text?",
+            "answers": [
+              {
+                "id": 5985,
+                "text": "letter-spacing",
+                "isCorrect": false
+              },
+              {
+                "id": 5986,
+                "text": "text-spacing",
+                "isCorrect": false
+              },
+              {
+                "id": 5987,
+                "text": "line-height",
+                "isCorrect": true
+              },
+              {
+                "id": 5988,
+                "text": "word-spacing",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1498,
+            "text": "What is the purpose of using 'useState' hook in React?",
+            "answers": [
+              {
+                "id": 5989,
+                "text": "To manage state within a functional component.",
+                "isCorrect": true
+              },
+              {
+                "id": 5990,
+                "text": "To define lifecycle methods in React components.",
+                "isCorrect": false
+              },
+              {
+                "id": 5991,
+                "text": "To create reusable UI components.",
+                "isCorrect": false
+              },
+              {
+                "id": 5992,
+                "text": "To handle events in React components.",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1499,
+            "text": "Which of the following is NOT a valid CSS selector?",
+            "answers": [
+              {
+                "id": 5993,
+                "text": "elementName",
+                "isCorrect": false
+              },
+              {
+                "id": 5994,
+                "text": "invalid selector",
+                "isCorrect": true
+              },
+              {
+                "id": 5995,
+                "text": "#myElement",
+                "isCorrect": false
+              },
+              {
+                "id": 5996,
+                "text": ".myClass",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1500,
+            "text": "What is the purpose of using 'useEffect' hook in React?",
+            "answers": [
+              {
+                "id": 5997,
+                "text": "To manage state within a functional component.",
+                "isCorrect": false
+              },
+              {
+                "id": 5998,
+                "text": "To define the render method in a component.",
+                "isCorrect": false
+              },
+              {
+                "id": 5999,
+                "text": "To create reusable UI components.",
+                "isCorrect": false
+              },
+              {
+                "id": 6000,
+                "text": "To perform side effects in functional components.",
+                "isCorrect": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "levelNumber": 1,
+      "id": 143,
+      "progressStatus": null,
+      "trackResourceId": 76,
+      "url": "https://www.youtube.com/playlist?list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y",
+      "title": "Javascript from start to professional and Document manipulation",
+      "level": "Intermediate",
+      "language": "Arabic",
+      "typeOfContent": "Visual",
+      "estimatedDuration": 470,
+      "lessons": [
+        {
+          "lessonNumber": 1,
+          "id": 765,
+          "title": "learn javascript [introduction - lecture #1]",
+          "url": "https://www.youtube.com/watch?v=30T6janY0SQ&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=1",
+          "estimatedDuration": 30
+        },
+        {
+          "lessonNumber": 2,
+          "id": 766,
+          "title": "learn javascript [Syntax Variables And Operators - lecture #2]",
+          "url": "https://www.youtube.com/watch?v=KuwEWxUIrDY&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=2",
+          "estimatedDuration": 56
+        },
+        {
+          "lessonNumber": 3,
+          "id": 767,
+          "title": "learn javascript [Functions & Conditions With operators - lecture #3]",
+          "url": "https://www.youtube.com/watch?v=44txTLnvvvw&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=3",
+          "estimatedDuration": 77
+        },
+        {
+          "lessonNumber": 4,
+          "id": 768,
+          "title": "learn javascript [Functions & events - lecture #4]",
+          "url": "https://www.youtube.com/watch?v=59lDN56UDxU&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=4",
+          "estimatedDuration": 68
+        },
+        {
+          "lessonNumber": 5,
+          "id": 769,
+          "title": "learn javascript [Self Invoke & String Methods Part 1 - lecture #5]",
+          "url": "https://www.youtube.com/watch?v=ROZNJMbJDUY&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=5",
+          "estimatedDuration": 62
+        },
+        {
+          "lessonNumber": 6,
+          "id": 770,
+          "title": "learn javascript [String Methods part 2 - lecture #6]",
+          "url": "https://www.youtube.com/watch?v=xbcIzFT3H64&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=6",
+          "estimatedDuration": 55
+        },
+        {
+          "lessonNumber": 7,
+          "id": 771,
+          "title": "learn javascript [String Methods Part 3 - lecture #7]",
+          "url": "https://www.youtube.com/watch?v=ml19S1BENpk&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=7",
+          "estimatedDuration": 45
+        },
+        {
+          "lessonNumber": 8,
+          "id": 772,
+          "title": "learn javascript [Math Methods - lecture #8]",
+          "url": "https://www.youtube.com/watch?v=RV8lK-3-flg&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=8",
+          "estimatedDuration": 13
+        },
+        {
+          "lessonNumber": 9,
+          "id": 773,
+          "title": "learn javascript [Numbers In Deep - lecture #9]",
+          "url": "https://www.youtube.com/watch?v=S1AbUTgNayo&list=PLpJtaIgvI9k-L2kHA-rPcaN7pjA5gCg9y&index=9",
+          "estimatedDuration": 64
+        }
+      ],
+      "quiz": {
+        "id": 218,
+        "title": "Quiz For A YouTube playlist for intermediate frontend developers.",
+        "createdAt": "2025-06-17T05:53:45.1563344",
+        "isCompleted": false,
+        "questions": [
+          {
+            "id": 1496,
+            "text": "What is the purpose of using 'Array.map()' in JavaScript?",
+            "answers": [
+              {
+                "id": 5981,
+                "text": "To filter elements from an array based on a condition.",
+                "isCorrect": false
+              },
+              {
+                "id": 5982,
+                "text": "To sort the elements of an array.",
+                "isCorrect": false
+              },
+              {
+                "id": 5983,
+                "text": "To create a new array with the results of calling a provided function on every element in the calling array.",
+                "isCorrect": true
+              },
+              {
+                "id": 5984,
+                "text": "To iterate over an array and modify it directly.",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1497,
+            "text": "Which CSS property is used to control the spacing between lines of text?",
+            "answers": [
+              {
+                "id": 5985,
+                "text": "letter-spacing",
+                "isCorrect": false
+              },
+              {
+                "id": 5986,
+                "text": "text-spacing",
+                "isCorrect": false
+              },
+              {
+                "id": 5987,
+                "text": "line-height",
+                "isCorrect": true
+              },
+              {
+                "id": 5988,
+                "text": "word-spacing",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1498,
+            "text": "What is the purpose of using 'useState' hook in React?",
+            "answers": [
+              {
+                "id": 5989,
+                "text": "To manage state within a functional component.",
+                "isCorrect": true
+              },
+              {
+                "id": 5990,
+                "text": "To define lifecycle methods in React components.",
+                "isCorrect": false
+              },
+              {
+                "id": 5991,
+                "text": "To create reusable UI components.",
+                "isCorrect": false
+              },
+              {
+                "id": 5992,
+                "text": "To handle events in React components.",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1499,
+            "text": "Which of the following is NOT a valid CSS selector?",
+            "answers": [
+              {
+                "id": 5993,
+                "text": "elementName",
+                "isCorrect": false
+              },
+              {
+                "id": 5994,
+                "text": "invalid selector",
+                "isCorrect": true
+              },
+              {
+                "id": 5995,
+                "text": "#myElement",
+                "isCorrect": false
+              },
+              {
+                "id": 5996,
+                "text": ".myClass",
+                "isCorrect": false
+              }
+            ]
+          },
+          {
+            "id": 1500,
+            "text": "What is the purpose of using 'useEffect' hook in React?",
+            "answers": [
+              {
+                "id": 5997,
+                "text": "To manage state within a functional component.",
+                "isCorrect": false
+              },
+              {
+                "id": 5998,
+                "text": "To define the render method in a component.",
+                "isCorrect": false
+              },
+              {
+                "id": 5999,
+                "text": "To create reusable UI components.",
+                "isCorrect": false
+              },
+              {
+                "id": 6000,
+                "text": "To perform side effects in functional components.",
+                "isCorrect": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

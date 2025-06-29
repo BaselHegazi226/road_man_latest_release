@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "966075316489",
+    "project_id": "road-man-project-auth",
+    "storage_bucket": "road-man-project-auth.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966075316489:android:2c14ca43b4808ab6e1fbd8",
+        "android_client_info": {
+          "package_name": "com.example.road_man_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966075316489-18p13tm9e48kolg7p8mf5v2mf39uo9tm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.road_man_project",
+            "certificate_hash": "331084d74b81128637c970cd9fcfcf8c57511ccf"
+          }
+        },
+        {
+          "client_id": "966075316489-4f4np8g6npvrp4hqnc143b151258jhui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZsXS3vHqKjLNQ7oPPS5QzPUITsZeX9WI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966075316489-4f4np8g6npvrp4hqnc143b151258jhui.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "966075316489-5b65alqs5uj75guki52tjattv3v0mop4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.roadManProject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
