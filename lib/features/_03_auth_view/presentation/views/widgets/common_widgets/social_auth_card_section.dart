@@ -20,6 +20,7 @@ class SocialAuthCardSection extends StatefulWidget {
     required this.onSocialAuthLoadingChanged,
     required this.title,
   });
+
   final String title;
   final bool authButtonIsLoading;
   final ValueChanged<bool> onSocialAuthLoadingChanged;
@@ -42,6 +43,9 @@ class _SocialAuthCardSectionState extends State<SocialAuthCardSection> {
           context.read<SocialAuthBloc>().add(
             SignInWithGoogleTokenEvent(token: state.token),
           );
+        }
+
+        if (state is SignInWithGoogleTokenSuccess) {
           customAwesomeDialog(
             context: context,
             title: 'Sign In With Google Success',
@@ -50,14 +54,25 @@ class _SocialAuthCardSectionState extends State<SocialAuthCardSection> {
             buttonText: 'Go To Road Man App',
             isSuccess: true,
             onPressed: () {
-              GoRouter.of(context).push(Routes.questionnaireViewId);
+              if (state.signInWithGoogleGetModel.metadata.isNewUser == true) {
+                GoRouter.of(context).push(Routes.questionnaireViewId);
+              } else {
+                GoRouter.of(context).push(Routes.mainViewId);
+              }
             },
           );
-        } else if (state is SignInWithGoogleFailure) {
-          print('error from social card ${state.errorMessage}');
+        }
+
+        if (state is SignInWithGoogleFailure ||
+            state is SignInWithGoogleTokenFailure) {
+          final errorMessage =
+              (state is SignInWithGoogleFailure)
+                  ? state.errorMessage
+                  : (state as SignInWithGoogleTokenFailure).errorMessage;
+
           customAwesomeDialog(
-            title: 'Problem Occur',
-            description: state.errorMessage,
+            title: 'Problem Occurred',
+            description: errorMessage,
             context: context,
             isSuccess: false,
             onPressed: () {
@@ -97,6 +112,7 @@ class _SocialAuthCardSectionState extends State<SocialAuthCardSection> {
                           size: screenWidth * .05,
                         ),
                       ),
+
                       Text(
                         widget.title,
                         style: AfacadTextStyles.textStyle20W700Blue(context),

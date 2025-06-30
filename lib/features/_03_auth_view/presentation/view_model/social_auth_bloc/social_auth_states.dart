@@ -1,3 +1,5 @@
+import 'package:road_man_project/features/_03_auth_view/data/model/sign_in_with_google_get_model.dart';
+
 abstract class SocialAuthStates {}
 
 class SocialAuthInitial extends SocialAuthStates {}
@@ -27,4 +29,7 @@ class SignInWithGoogleTokenFailure extends SocialAuthStates {
 
 class SignInWithGoogleTokenLoading extends SocialAuthStates {}
 
-class SignInWithGoogleTokenSuccess extends SocialAuthStates {}
+class SignInWithGoogleTokenSuccess extends SocialAuthStates {
+  final SignInWithGoogleGetModel signInWithGoogleGetModel;
+  SignInWithGoogleTokenSuccess({required this.signInWithGoogleGetModel});
+}

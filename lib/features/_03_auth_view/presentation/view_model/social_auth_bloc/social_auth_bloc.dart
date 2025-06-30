@@ -53,7 +53,9 @@ class SocialAuthBloc extends Bloc<SocialAuthEvent, SocialAuthStates> {
         );
       },
       (success) async {
-        return emit(SignInWithGoogleTokenSuccess());
+        return emit(
+          SignInWithGoogleTokenSuccess(signInWithGoogleGetModel: success),
+        );
       },
     );
   }

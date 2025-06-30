@@ -5,6 +5,8 @@ import 'package:road_man_project/core/utilities/routes.dart';
 
 import '../../../../../../core/helper/const_variables.dart';
 import '../../../../../_05_main_view/presentation/view/widgets/custom_dashboard_widgets/open_dashboard.dart';
+import '../../../../../_09_profile_view/data/repos/profile_repos/profile_repos_implementation.dart';
+import '../../../../../_09_profile_view/presentation/view_model/get_user_info_cubit/get_user_info_cubit.dart';
 import '../../../view_model/recent_jobs/recent_jobs_cubit.dart';
 import 'job_view_dashboard_view_body.dart';
 
@@ -22,7 +24,16 @@ AppBar jobViewAppbar(BuildContext context) {
         color: kEditProfileIconColor,
         size: iconSize, // حجم الأيقونة ديناميكي
       ),
-      onPressed: () => openDashboard(context, const JobViewDashboardViewBody()),
+      onPressed: () {
+        final dashboardBody = BlocProvider<GetUserInfoCubit>(
+          create:
+              (_) =>
+                  GetUserInfoCubit(profileRepos: ProfileReposImplementation()),
+          child: const JobViewDashboardViewBody(),
+        );
+
+        openDashboard(context, dashboardBody);
+      },
     ),
     actions: [
       IconButton(

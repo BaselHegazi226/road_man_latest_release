@@ -94,6 +94,20 @@ abstract class UserLearningPathHelper {
     }
   }
 
+  // الدالة الجديدة لحساب المستوى النشط بناءً على التقدم الفعلي
+  static int calculateActiveLevelIndex() {
+    final paths = getAllLearningPaths();
+    int lastCompleted = -1;
+    for (int i = 0; i < paths.length; i++) {
+      if (paths[i].progressStatus == 100) {
+        lastCompleted = i;
+      } else {
+        break;
+      }
+    }
+    return (lastCompleted + 1).clamp(0, paths.length - 1);
+  }
+
   // ✅ New: Save full lesson completed model
   static Future<void> saveLessonCompletedLocally(
     LearnPathLessonCompletedModel model,

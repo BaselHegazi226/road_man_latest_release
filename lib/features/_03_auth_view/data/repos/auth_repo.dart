@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:road_man_project/core/error/failure.dart';
+import 'package:road_man_project/features/_03_auth_view/data/model/sign_in_with_google_get_model.dart';
 import 'package:road_man_project/features/_03_auth_view/data/model/user_token_model.dart';
 
 abstract class AuthRepo {
@@ -33,7 +34,7 @@ abstract class AuthRepo {
     required String otp,
   });
   Future<Either<Failure, String>> signInWithGoogle();
-  Future<Either<Failure, UserTokensModel>> signInWithGoogleToken({
+  Future<Either<Failure, SignInWithGoogleGetModel>> signInWithGoogleToken({
     required String token,
   });
   Future<Either<Failure, UserTokensModel>> refreshToken({

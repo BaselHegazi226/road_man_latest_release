@@ -8,6 +8,7 @@ import 'package:road_man_project/features/_07_learn_view/presentation/view/widge
 import 'package:road_man_project/features/_07_learn_view/presentation/view_model/learning_path_bloc/learning_path_blocs/Learning_path_bloc.dart';
 
 import '../../../../core/helper/const_variables.dart';
+import '../view_model/learning_path_bloc/learning_path_cubit/learning_path_cubit.dart';
 import '../view_model/learning_path_bloc/learning_path_cubit/learning_path_states.dart';
 
 class QuizView extends StatefulWidget {
@@ -74,10 +75,19 @@ class _QuizViewState extends State<QuizView> {
       );
     }
 
-    return BlocProvider(
-      create:
-          (context) =>
-              LearningPathBloc(learningPathRepo: LearningPathRepoImpl()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create:
+              (context) =>
+                  LearningPathBloc(learningPathRepo: LearningPathRepoImpl()),
+        ),
+        BlocProvider(
+          create:
+              (context) =>
+                  LearningPathCubit(learningPathRepo: LearningPathRepoImpl()),
+        ),
+      ],
       child: BlocBuilder<LearningPathBloc, LearningPathStates>(
         builder: (context, state) {
           return Scaffold(

@@ -7,6 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:road_man_project/core/error/failure.dart';
 import 'package:road_man_project/features/_03_auth_view/data/model/forget_password_model.dart';
 import 'package:road_man_project/features/_03_auth_view/data/model/sign_in_model.dart';
+import 'package:road_man_project/features/_03_auth_view/data/model/sign_in_with_google_get_model.dart';
 import 'package:road_man_project/features/_03_auth_view/data/model/sign_in_with_google_token_model.dart';
 import 'package:road_man_project/features/_03_auth_view/data/model/user_token_model.dart';
 import 'package:road_man_project/features/_03_auth_view/data/model/verification_otp_model.dart';
@@ -256,7 +257,7 @@ class AuthRepoImplement implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, UserTokensModel>> signInWithGoogleToken({
+  Future<Either<Failure, SignInWithGoogleGetModel>> signInWithGoogleToken({
     required String token,
   }) async {
     final String signInWithGoogleTokenPath = '$baseUrl/Accounts/google-login';
@@ -266,16 +267,21 @@ class AuthRepoImplement implements AuthRepo {
         signInWithGoogleTokenPath,
         data: signInWithGoogleTokenModel.toJson(),
       );
+
       if (response.statusCode == 200) {
         final data = response.data;
-        print('data = $data');
-        final UserTokensModel userTokenModel = UserTokensModel.fromJson(data);
-        await SecureStorageHelper.saveUserTokens(userTokenModel);
-        return right(userTokenModel);
-      } else {
-        print(
-          'error from hazem google with status code : ${ServerFailure.fromResponse(statusCode: response.statusCode, responseData: response.data)}',
+        print('✅ Google login response data: $data');
+
+        // ✳️ هنا التعديل: استخدم الموديل الجديد
+        final model = SignInWithGoogleGetModel.fromJson(data);
+
+        // ✳️ خزن التوكنات
+        await SecureStorageHelper.saveUserTokens(
+          UserTokensModel(token: model.token, refreshToken: model.refreshToken),
         );
+
+        return right(model);
+      } else {
         return left(
           ServerFailure.fromResponse(
             statusCode: response.statusCode,
@@ -284,10 +290,8 @@ class AuthRepoImplement implements AuthRepo {
         );
       }
     } on DioException catch (dioException) {
-      print('error from hazem google : ${dioException.message}');
       return left(ServerFailure.fromDioException(dioException));
     } catch (e) {
-      print('error : ${e.toString()}');
       return left(ServerFailure(errorMessage: e.toString()));
     }
   }

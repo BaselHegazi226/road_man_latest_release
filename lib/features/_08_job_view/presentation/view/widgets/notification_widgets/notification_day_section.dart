@@ -38,8 +38,9 @@ class NotificationDaySection extends StatelessWidget {
               return _isSameDay(notification.creationDate, currentDate);
             }).toList();
 
-        if (notificationsForDay.isEmpty)
+        if (notificationsForDay.isEmpty) {
           return const SizedBox(); // تجاهل اليوم لو مفيش إشعارات
+        }
 
         return Padding(
           padding: EdgeInsets.only(bottom: screenHeight * .02),

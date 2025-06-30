@@ -35,7 +35,6 @@ class _LearningPathViewBodyState extends State<LearningPathViewBody> {
   @override
   void initState() {
     super.initState();
-    activeLevelIndex = UserLearningPathHelper.getActiveLevelIndex();
     _loadLearningPaths();
   }
 
@@ -57,7 +56,10 @@ class _LearningPathViewBodyState extends State<LearningPathViewBody> {
         );
       }
     } else {
-      setState(() => localLearningPaths = existingPaths);
+      setState(() {
+        localLearningPaths = existingPaths;
+        activeLevelIndex = UserLearningPathHelper.calculateActiveLevelIndex();
+      });
     }
   }
 
@@ -81,19 +83,30 @@ class _LearningPathViewBodyState extends State<LearningPathViewBody> {
 
     if (mounted) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) setState(() => localLearningPaths = fetchedPaths);
+        if (mounted) {
+          setState(() {
+            localLearningPaths = fetchedPaths;
+            activeLevelIndex =
+                UserLearningPathHelper.calculateActiveLevelIndex();
+          });
+        }
       });
     }
   }
 
   Widget _buildStep(int index, double screenWidth, double screenHeight) {
     final levelIndex = index ~/ 3;
-
-    // ✅ حماية من الخطأ: لو المستوى مش موجود
     if (levelIndex >= localLearningPaths.length) return const SizedBox();
 
-    final isCurrentOrPast = levelIndex <= activeLevelIndex;
-    final isNextLevel = levelIndex == activeLevelIndex + 1;
+    final currentLevel = localLearningPaths[levelIndex];
+
+    final isCurrentLevel = levelIndex == activeLevelIndex;
+    final isPastLevel = levelIndex < activeLevelIndex;
+    final isNextLevel =
+        levelIndex == activeLevelIndex + 1 &&
+        localLearningPaths[activeLevelIndex].progressStatus == 100;
+
+    final isEnabled = isCurrentLevel || isPastLevel || isNextLevel;
 
     final lessonOffset = screenWidth * 0.2;
     final quizOffset = screenWidth * 0.1;
@@ -113,25 +126,32 @@ class _LearningPathViewBodyState extends State<LearningPathViewBody> {
         type = StepType.lesson;
     }
 
-    final level = isCurrentOrPast ? localLearningPaths[levelIndex] : null;
     final isEven = levelIndex % 2 == 0;
+
+    final int progressForStyle =
+        isEnabled
+            ? (currentLevel.progressStatus == 0
+                ? 1
+                : currentLevel.progressStatus)
+            : 0;
 
     final style = StepStyleHelper.getStepStyle(
       stepType: type,
-      progressStatus: level?.progressStatus ?? 0,
+      progressStatus: progressForStyle,
     );
 
     VoidCallback? onPressed;
 
-    if (isCurrentOrPast) {
+    if (isEnabled) {
       switch (type) {
         case StepType.star:
           onPressed = () {};
           break;
         case StepType.lesson:
           onPressed =
-              () =>
-                  GoRouter.of(context).push(Routes.lessonViewId, extra: level);
+              () => GoRouter.of(
+                context,
+              ).push(Routes.lessonViewId, extra: currentLevel);
           break;
         case StepType.quiz:
           onPressed = () async {
@@ -141,12 +161,14 @@ class _LearningPathViewBodyState extends State<LearningPathViewBody> {
             final cubit = BlocProvider.of<LearningPathCubit>(context);
             await cubit.getQuizCompleted(
               userToken: userTokenModel.token,
-              quizId: level!.quiz.id,
+              quizId: currentLevel.quiz.id,
             );
 
             final state = cubit.state;
             if (state is QuizCompletedGetSuccess && state.finished) {
-              GoRouter.of(context).push(Routes.quizViewId, extra: level.quiz);
+              GoRouter.of(
+                context,
+              ).push(Routes.quizViewId, extra: currentLevel.quiz);
             } else {
               customAwesomeDialog(
                 context: context,
@@ -159,16 +181,6 @@ class _LearningPathViewBodyState extends State<LearningPathViewBody> {
             }
           };
           break;
-      }
-    } else if (isNextLevel) {
-      if (type == StepType.star) {
-        onPressed = () {
-          showSafeSnackBar(
-            context,
-            "New level will be available soon",
-            Colors.blue,
-          );
-        };
       }
     }
 
@@ -226,19 +238,20 @@ class _LearningPathViewBodyState extends State<LearningPathViewBody> {
         if (state is LearningPathLoading) {
           return const Center(child: CircularProgressIndicator());
         }
+
         if (localLearningPaths.isEmpty) {
           return Center(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth * .016),
               child: Text(
                 textAlign: TextAlign.center,
-                'No Available Data Now if you want to take track edit profile and create new recommendation',
+                'No Available Data Now. Edit your profile and create a new recommendation.',
                 style: AfacadTextStyles.textStyle16W600Grey(context),
-                softWrap: true,
               ),
             ),
           );
         }
+
         return Scaffold(
           body: Stack(
             children: [
@@ -254,23 +267,32 @@ class _LearningPathViewBodyState extends State<LearningPathViewBody> {
                   SliverList(
                     delegate: SliverChildBuilderDelegate((context, index) {
                       final levelIndex = index ~/ 3;
-                      final isLevelFinished =
-                          localLearningPaths.length > levelIndex &&
-                          localLearningPaths[levelIndex].progressStatus == 100;
-                      final isLastInLevel = index % 3 == 2;
-                      final isNotLastLevel =
-                          levelIndex < localLearningPaths.length - 1;
+                      final isFirstInLevel = index % 3 == 0;
 
-                      // بعد آخر عنصر في المستوى، لو المستوى مكتمل، أظهر StartCard بدل الخطوة
-                      if (isLastInLevel && isLevelFinished && isNotLastLevel) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: Center(child: StartCard()),
+                      final isCurrentLevel = levelIndex == activeLevelIndex;
+                      final isNotLastLevel =
+                          levelIndex < localLearningPaths.length;
+
+                      // إظهار StartCard فقط مع بداية المستوى النشط فقط، وبشرط التقدم صفر (المستوى لم يبدأ بعد)
+                      final isStartCardForThisLevel =
+                          isFirstInLevel &&
+                          isCurrentLevel &&
+                          localLearningPaths[levelIndex].progressStatus == 0;
+
+                      if (isStartCardForThisLevel) {
+                        return Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: Center(child: StartCard()),
+                            ),
+                            _buildStep(index, screenWidth, screenHeight),
+                          ],
                         );
                       }
 
                       return _buildStep(index, screenWidth, screenHeight);
-                    }, childCount: (localLearningPaths.length * 3).clamp(0, 9)),
+                    }, childCount: localLearningPaths.length * 3),
                   ),
                 ],
               ),

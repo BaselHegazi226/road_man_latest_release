@@ -1,4 +1,3 @@
-// ✅ LessonViewCard.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:road_man_project/core/helper/const_variables.dart';
@@ -8,7 +7,7 @@ import 'package:road_man_project/core/utilities/show_snack_bar.dart';
 import 'package:road_man_project/features/_07_learn_view/presentation/view_model/learning_path_bloc/learning_path_blocs/Learning_path_bloc.dart';
 import 'package:road_man_project/features/_07_learn_view/presentation/view_model/learning_path_bloc/learning_path_cubit/learning_path_cubit.dart';
 import 'package:road_man_project/features/_07_learn_view/presentation/view_model/learning_path_bloc/learning_path_cubit/learning_path_states.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../../../../core/manager/user_learning_path_manager/user_learning_path_manager.dart';
 import '../../../../data/model/learn_path_lesson_completed_model.dart';
@@ -53,7 +52,7 @@ class LessonViewCard extends StatelessWidget {
           listener: (context, state) async {
             if (state is LessonCompletedPostSuccess &&
                 state.lessonId == learnPathLessonModel.id) {
-              // حفظ محلي
+              // ✅ حفظ محلي
               UserLearningPathHelper.saveLessonCompletedLocally(
                 LearnPathLessonCompletedModel(
                   isCompleted: true,
@@ -61,13 +60,15 @@ class LessonViewCard extends StatelessWidget {
                 ),
               );
 
+              // ✅ عرض SnackBar
+              if (!context.mounted) return;
               showSafeSnackBar(
                 context,
                 'Lesson 0${learnPathLessonModel.lessonNumber} completed successfully.',
                 kAppPrimaryBlueColor,
               );
 
-              // ✅ استدعاء الدالة التي تحدث البيانات
+              // ✅ تحديث التقدم
               await context
                   .read<LearningPathCubit>()
                   .completeLessonAndRefreshLearningPath(
@@ -75,20 +76,14 @@ class LessonViewCard extends StatelessWidget {
                     lessonId: learnPathLessonModel.id,
                   );
 
-              // ✅ طباعة البيانات بعد التحديث
-              final updatedPaths = UserLearningPathHelper.getAllLearningPaths();
-              for (var path in updatedPaths) {
-                print(
-                  'Path: ${path.title} - Progress: ${path.progressStatus}%',
-                );
-                for (var lesson in path.lessons) {
-                  print(' - Lesson ${lesson.lessonNumber}: ${lesson.title}');
-                }
-                print(' - Quiz: ${path.quiz.title}');
-              }
-
+              // ✅ تحديث الواجهة
+              if (!context.mounted) return;
               onLessonCompleted();
+
+              // ✅ فتح الرابط
+              await openUrlFun(context);
             } else if (state is LessonCompletedPostFailure) {
+              if (!context.mounted) return;
               customAwesomeDialog(
                 title: 'Failed',
                 description: 'Can\'t open the source. Please try again later.',
@@ -105,14 +100,13 @@ class LessonViewCard extends StatelessWidget {
               learnPathLessonModel: learnPathLessonModel,
               onPressed:
                   isCompleted || isCurrent
-                      ? () async {
+                      ? () {
                         context.read<LearningPathBloc>().add(
                           LessonCompletedPostEvent(
                             userToken: userToken,
                             lessonId: learnPathLessonModel.id,
                           ),
                         );
-                        await openUrlFun(context);
                       }
                       : null,
               isCompleted: isCompleted,
@@ -125,16 +119,23 @@ class LessonViewCard extends StatelessWidget {
   }
 
   Future<void> openUrlFun(BuildContext context) async {
-    final String fixedUrl =
-        learnPathLessonModel.url.startsWith('http')
-            ? learnPathLessonModel.url
-            : 'https://${learnPathLessonModel.url}';
-    final Uri url = Uri.parse(Uri.encodeFull(fixedUrl));
+    final rawUrl = learnPathLessonModel.url.trim();
 
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
-    } else {
-      showSafeSnackBar(context, 'Unable to open link.', kAppPrimaryWrongColor);
+    final fixedUrl = rawUrl.startsWith('http') ? rawUrl : 'https://$rawUrl';
+
+    print('🔗 Trying to launch: $fixedUrl');
+
+    final launched = await launchUrlString(
+      fixedUrl,
+      mode: LaunchMode.externalApplication,
+    );
+
+    if (!launched && context.mounted) {
+      showSafeSnackBar(
+        context,
+        '❌ فشل في فتح الرابط. تأكد من وجود تطبيق يفتح الروابط زي YouTube أو المتصفح.',
+        kAppPrimaryWrongColor,
+      );
     }
   }
 }

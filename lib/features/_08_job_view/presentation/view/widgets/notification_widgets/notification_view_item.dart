@@ -37,7 +37,7 @@ class NotificationViewItem extends StatelessWidget {
                 ),
                 NotificationAccessTimeSection(
                   hour:
-                      '${DateTime.now().difference(notificationModel.creationDate).inHours}',
+                      '${DateTime.now().difference(notificationModel.creationDate).inHours} hours',
                 ),
               ],
             ),
