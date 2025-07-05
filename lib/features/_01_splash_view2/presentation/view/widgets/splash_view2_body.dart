@@ -126,13 +126,9 @@ class _SplashView2BodyState extends State<SplashView2Body>
       },
       child: Center(
         child: Column(
-          mainAxisAlignment:
-              MainAxisAlignment.center, // محاذاة عمودية في وسط الشاشة
-          crossAxisAlignment:
-              CrossAxisAlignment.center, // محاذاة أفقية في وسط الشاشة
-          spacing:
-              screenSize.height *
-              .03, // ❌ خطأ: Column ما عندهاش خاصية spacing (مطلوب استخدام SizedBox)
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          spacing: screenSize.height * .03,
           children: [
             // ويدجت يظهر الحروف مع الأنيميشن وظهور الحروف حسب المتغيرات
             LogoVisibilityWidget(

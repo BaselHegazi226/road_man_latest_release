@@ -29,8 +29,9 @@ class LogoVisibilityWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(right: MediaQuery.sizeOf(context).width * .35),
+    final double screenWidth = MediaQuery.sizeOf(context).width;
+    return SizedBox(
+      width: screenWidth * .5,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -69,7 +70,7 @@ class LogoVisibilityWidget extends StatelessWidget {
           /// Dman
           Positioned(
             bottom: -5,
-            left: 170,
+            left: 178,
             child: Visibility(
               visible: _showDman,
               child: SlideTransition(
