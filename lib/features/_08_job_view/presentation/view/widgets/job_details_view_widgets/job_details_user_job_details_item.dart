@@ -48,9 +48,13 @@ class JobDetailsUserJobDetailsItem extends StatelessWidget {
                   title,
                   style: AfacadTextStyles.textStyle14W400Black(context),
                 ),
-                Text(
-                  subTitle,
-                  style: AfacadTextStyles.textStyle14W400Blue(context),
+
+                SizedBox(
+                  width: MediaQuery.sizeOf(context).width * .15,
+                  child: Text(
+                    subTitle,
+                    style: AfacadTextStyles.textStyle14W400Blue(context),
+                  ),
                 ),
               ],
             ),
