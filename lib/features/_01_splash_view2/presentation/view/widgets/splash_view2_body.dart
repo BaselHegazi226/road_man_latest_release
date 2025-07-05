@@ -58,6 +58,7 @@ class _SplashView2BodyState extends State<SplashView2Body>
 
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.sizeOf(context).height;
     return BlocListener<RefreshTokenCubit, RefreshTokenStates>(
       listener: (context, state) {
         if (state is RefreshTokenSuccess) {
@@ -83,7 +84,7 @@ class _SplashView2BodyState extends State<SplashView2Body>
               showDman: _showDman,
               dmanAnimation: _animations.dmanAnimation,
             ),
-            const SizedBox(height: 24),
+            SizedBox(height: screenHeight * .03),
             if (_showWelcomeMessage) const WelcomeTextWidget(),
           ],
         ),
