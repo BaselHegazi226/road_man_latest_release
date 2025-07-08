@@ -226,32 +226,45 @@ class AuthRepoImplement implements AuthRepo {
   @override
   Future<Either<Failure, String>> signInWithGoogle() async {
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+      // ⛔ تسجيل خروج من الجلسة السابقة
+      final GoogleSignIn googleSignIn = GoogleSignIn(scopes: ['email']);
+      await googleSignIn.signOut(); // إجباري لإظهار شاشة اختيار الحسابات
+
+      // ✅ تسجيل الدخول من جديد
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      if (googleUser == null) {
+        return left(FirebaseFailure(errorMessage: 'Sign in aborted by user'));
+      }
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
       final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
       );
+
       final userCredential = await FirebaseAuth.instance.signInWithCredential(
         credential,
       );
+
       final idToken = await userCredential.user?.getIdToken();
-      print('token with google from implement = $idToken');
+
       if (idToken == null) {
-        return left(FirebaseFailure(errorMessage: 'Unable to find user info'));
+        return left(FirebaseFailure(errorMessage: 'Unable to get ID token'));
       }
+      print('✅ token with Google from implement = $idToken');
       return right(idToken);
     } on FirebaseAuthException catch (authException) {
-      print('aut exceppppppption ${authException.message}');
+      print('❌ FirebaseAuthException: ${authException.message}');
       return left(
         FirebaseFailure.fromFirebaseAuthException(exception: authException),
       );
     } on FirebaseException catch (exception) {
-      print('excptionnnnnnnnnnnnnnnnnn ${exception.message}');
+      print('❌ FirebaseException: ${exception.message}');
       return left(FirebaseFailure.fromFirebaseException(exception: exception));
     } catch (e) {
-      print('errorrrrrrrrrrrrrrrrrrrrrrrrrrrr ${e.toString()}');
+      print('❌ Unknown error: ${e.toString()}');
       return left(FirebaseFailure(errorMessage: e.toString()));
     }
   }
