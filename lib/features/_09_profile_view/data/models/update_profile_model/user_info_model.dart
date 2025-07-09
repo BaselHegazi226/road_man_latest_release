@@ -34,9 +34,7 @@ class UserInfoModel {
       photo:
           rawBase64 != null && rawBase64.isNotEmpty
               ? ''
-              : (hasAllowedExtension
-                  ? rawPhoto
-                  : Assets.profileProfileUserImage),
+              : (hasAllowedExtension ? rawPhoto : Assets.profileDefaultImage),
     );
   }
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:road_man_project/core/helper/const_variables.dart';
 import 'package:road_man_project/core/manager/tokens_manager.dart';
-import 'package:road_man_project/core/utilities/custom_circle_indicator.dart';
+import 'package:road_man_project/core/utilities/shimmer_app.dart';
 import 'package:road_man_project/features/_09_profile_view/presentation/view_model/get_user_info_cubit/get_user_info_cubit.dart';
 import 'package:road_man_project/features/_09_profile_view/presentation/view_model/get_user_info_cubit/get_user_info_state.dart';
 
@@ -55,7 +55,12 @@ class _HomeViewDashboardViewBodyState extends State<HomeViewDashboardViewBody> {
                   photo: state.userInfoModel.photoBase64 ?? '',
                 );
               } else if (state is GetUserInfoLoadingState) {
-                return CustomCircleIndicator(color: kAppPrimaryBlueColor);
+                return Padding(
+                  padding: EdgeInsetsGeometry.symmetric(
+                    vertical: screenHeight * .04,
+                  ),
+                  child: ProfileUserInfoShimmer(),
+                );
               } else if (state is GetUserInfoFailureState) {
                 return Text(
                   state.errorMessage,

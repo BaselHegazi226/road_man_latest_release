@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:road_man_project/core/helper/const_variables.dart';
+import 'package:road_man_project/core/utilities/shimmer_app.dart';
 import 'package:road_man_project/features/_06_home_view/data/model/progress_model.dart';
 import 'package:road_man_project/features/_06_home_view/presentation/view_model/progress_cubit/progress_cubit.dart';
 
@@ -16,7 +17,7 @@ class ProgressSection extends StatelessWidget {
     return BlocBuilder<ProgressCubit, ProgressState>(
       builder: (context, state) {
         if (state is ProgressInitial || state is ProgressLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: ProgressShimmerSection());
         }
         // 2. في حالة النجاح
         else if (state is ProgressSuccess) {

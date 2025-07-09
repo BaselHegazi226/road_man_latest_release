@@ -32,6 +32,7 @@ class ProfileUserInfo extends StatelessWidget {
           SizedBox(width: screenWidth * .03),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: screenHeight * .005,
             children: [
               Text(name, style: AfacadTextStyles.textStyle16W500Black(context)),
               Text(

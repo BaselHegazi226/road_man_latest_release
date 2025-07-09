@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:road_man_project/core/helper/const_variables.dart';
+import 'package:road_man_project/core/utilities/shimmer_app.dart';
 import 'package:road_man_project/core/utilities/show_snack_bar.dart';
 import 'package:road_man_project/features/_09_profile_view/presentation/view/widgets/profile_widgets/profile_items_section.dart';
 import 'package:road_man_project/features/_09_profile_view/presentation/view_model/get_user_info_cubit/get_user_info_cubit.dart';
@@ -69,7 +70,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody>
             builder: (context, state) {
               if (state is GetUserInfoLoadingState ||
                   state is GetUserInfoFailureState) {
-                return const Center(child: CircularProgressIndicator());
+                return const Center(child: ProfileUserInfoShimmer());
               }
 
               if (state is GetUserInfoSuccessState ||
@@ -82,14 +83,14 @@ class _ProfileViewBodyState extends State<ProfileViewBody>
                 return ProfileUserInfo(
                   email: user.email ?? 'No Email',
                   name: user.name ?? 'No Name',
-                  photo: user.photoBase64 ?? Assets.profileProfileUserImage,
+                  photo: user.photoBase64 ?? Assets.profileDefaultImage,
                 );
               }
 
               return const ProfileUserInfo(
                 email: 'email@gmail.com',
                 name: 'name',
-                photo: Assets.profileProfileUserImage,
+                photo: Assets.profileDefaultImage,
               );
             },
           ),

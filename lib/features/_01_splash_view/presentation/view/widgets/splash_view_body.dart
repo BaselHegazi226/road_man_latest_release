@@ -4,21 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:road_man_project/core/utilities/routes.dart';
-import 'package:road_man_project/features/_01_splash_view2/presentation/view/widgets/splash_animation.dart';
-import 'package:road_man_project/features/_01_splash_view2/presentation/view/widgets/welcome_text_widget.dart';
+import 'package:road_man_project/features/_01_splash_view/presentation/view/widgets/splash_animation.dart';
+import 'package:road_man_project/features/_01_splash_view/presentation/view/widgets/welcome_text_widget.dart';
 
 import '../../../../_03_auth_view/presentation/view_model/refresh_token_cubit/refresh_token_cubit.dart';
 import '../../../../_03_auth_view/presentation/view_model/refresh_token_cubit/refresh_token_state.dart';
 import 'logo_visibility_widget.dart';
 
-class SplashView2Body extends StatefulWidget {
-  const SplashView2Body({super.key});
+class SplashViewBody extends StatefulWidget {
+  const SplashViewBody({super.key});
 
   @override
-  State<SplashView2Body> createState() => _SplashView2BodyState();
+  State<SplashViewBody> createState() => _SplashViewBodyState();
 }
 
-class _SplashView2BodyState extends State<SplashView2Body>
+class _SplashViewBodyState extends State<SplashViewBody>
     with TickerProviderStateMixin {
   late final SplashAnimations _animations;
 

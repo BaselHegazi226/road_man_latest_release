@@ -9,11 +9,15 @@ part 'recommended_jobs_state.dart';
 
 class RecommendedJobsCubit extends Cubit<RecommendedJobsState> {
   final HomeRepoImplement _homeRepoImplement;
+  bool _hasFetched = false;
 
   RecommendedJobsCubit(this._homeRepoImplement)
     : super(RecommendedJobsInitial());
 
   Future<void> fetchRecommendedJobs() async {
+    // ✅ لو اتحملت قبل كده، متحملهاش تاني
+    if (_hasFetched) return;
+
     emit(RecommendedJobsLoading());
 
     try {
@@ -31,12 +35,10 @@ class RecommendedJobsCubit extends Cubit<RecommendedJobsState> {
             // ✅ لو الحالة السابقة كانت Success، قارن البيانات
             if (state is RecommendedJobsSuccess) {
               final currentJobs = (state as RecommendedJobsSuccess).jobs;
-
-              // ✅ لو نفس البيانات، متعملش emit تاني
               if (_areJobsEqual(currentJobs, newJobs)) return;
             }
 
-            // ✅ لو البيانات اختلفت → اعرضها
+            _hasFetched = true; // ✅ نعلم إنه اتحمل
             emit(RecommendedJobsSuccess(newJobs));
           },
         );
@@ -44,14 +46,11 @@ class RecommendedJobsCubit extends Cubit<RecommendedJobsState> {
         emit(RecommendedJobsFailure('User not authenticated. Please log in.'));
       }
     } catch (e) {
-      emit(
-        RecommendedJobsFailure('An unexpected error occurred: ${e.toString()}'),
-      );
+      emit(RecommendedJobsFailure('Unexpected error: ${e.toString()}'));
     }
   }
 
   bool _areJobsEqual(List<JobModel> a, List<JobModel> b) {
-    // لو نفس الطول ونفس العناصر بالترتيب
     if (a.length != b.length) return false;
     for (int i = 0; i < a.length; i++) {
       if (a[i] != b[i]) return false;

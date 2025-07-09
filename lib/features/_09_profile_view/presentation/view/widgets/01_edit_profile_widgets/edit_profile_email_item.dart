@@ -27,11 +27,11 @@ class EditProfileEmailItem extends StatelessWidget {
     final double screenWidth = MediaQuery.sizeOf(context).width;
     final double screenHeight = MediaQuery.sizeOf(context).height;
     return Container(
-      width: MediaQuery.sizeOf(context).width,
-      height: screenHeight * .08,
+      width: screenWidth,
+      height: screenHeight * .11, // زوّدنا الارتفاع شوية
       padding: EdgeInsets.symmetric(
         horizontal: screenWidth * .04,
-        vertical: screenWidth * .015,
+        vertical: screenWidth * .02,
       ),
       decoration: BoxDecoration(
         color: fullColor,
@@ -46,43 +46,43 @@ class EditProfileEmailItem extends StatelessWidget {
         ],
       ),
       child: Row(
-        spacing: screenWidth * .03,
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Row(
-            spacing: screenWidth * .03,
-            children: [
-              Icon(
-                Icons.email_outlined,
-                size: screenWidth * .06,
-                color: kEditProfileIconColor,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: screenHeight * .01),
-                child: Container(
-                  width: screenWidth * .005,
-                  color: kEditProfileDividerColor,
-                ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: screenHeight * .0025,
-                children: [
-                  Text(
-                    'Email',
-                    style: AfacadTextStyles.textStyle16W600H150Black(
-                      context,
-                    ).copyWith(color: kEditProfileTitleColor),
-                  ),
-                  Text(
-                    email,
-                    style: ConstFunctions.editProfileTextStyle(context),
-                  ),
-                ],
-              ),
-            ],
+          Icon(
+            Icons.email_outlined,
+            size: screenWidth * .06,
+            color: kEditProfileIconColor,
           ),
+          SizedBox(width: screenWidth * .03),
+          Container(
+            width: screenWidth * .005,
+            height: double.infinity,
+            color: kEditProfileDividerColor,
+          ),
+          SizedBox(width: screenWidth * .03),
+          // ✅ Expanded علشان يتسع حسب الحاجة
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Email',
+                  style: AfacadTextStyles.textStyle16W600H150Black(
+                    context,
+                  ).copyWith(color: kEditProfileTitleColor),
+                ),
+                SizedBox(height: screenHeight * .004),
+                Text(
+                  email,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: ConstFunctions.editProfileTextStyle(context),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(width: screenWidth * .02),
           Icon(
             Icons.edit_off_outlined,
             color: kEditProfileTitleColor,

@@ -1,5 +1,4 @@
 import 'package:go_router/go_router.dart';
-import 'package:road_man_project/features/_01_splash_view2/splash_view2.dart';
 import 'package:road_man_project/features/_03_auth_view/presentation/views/forget_password_view.dart';
 import 'package:road_man_project/features/_03_auth_view/presentation/views/reset_password_view.dart';
 import 'package:road_man_project/features/_03_auth_view/presentation/views/verification_otp_view.dart';
@@ -13,6 +12,7 @@ import 'package:road_man_project/features/_08_job_view/presentation/view/job_vie
 import 'package:road_man_project/features/_09_profile_view/presentation/view/change_password_view.dart';
 import 'package:road_man_project/features/_09_profile_view/presentation/view/profile_forget_password_view.dart';
 
+import '../../features/_01_splash_view/splash_view2.dart';
 import '../../features/_02_onboarding_view/presentation/view/onboarding_page_view.dart';
 import '../../features/_03_auth_view/presentation/views/sign_in_view.dart';
 import '../../features/_03_auth_view/presentation/views/sign_up_view.dart';
@@ -34,7 +34,7 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: Routes.splashView2Id,
-        builder: (context, state) => const SplashView2(),
+        builder: (context, state) => const SplashView(),
       ),
       GoRoute(
         path: Routes.onBoardingPageViewId,

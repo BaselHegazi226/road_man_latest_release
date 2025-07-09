@@ -41,3 +41,11 @@ PreferredSizeWidget customAppBar(
     ),
   );
 }
+
+AppBar customTitleAppbar(BuildContext context, {required String text}) {
+  return AppBar(
+    backgroundColor: kAppPrimaryWhiteColor,
+    centerTitle: true,
+    title: Text(text, style: AfacadTextStyles.textStyle20W600Black(context)),
+  );
+}

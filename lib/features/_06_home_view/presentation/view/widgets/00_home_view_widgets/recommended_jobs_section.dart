@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:road_man_project/core/utilities/base_text_styles.dart';
+import 'package:road_man_project/core/utilities/shimmer_app.dart';
 
 import '../../../view_model/recommended_jobs_cubit/recommended_jobs_cubit.dart';
 import '../03_recommended_jobs_section_widgets/job_card.dart';
@@ -30,7 +31,7 @@ class RecommendedJobsSection extends StatelessWidget {
               // 1. في حالة التحميل أو الحالة المبدئية
               if (state is RecommendedJobsLoading ||
                   state is RecommendedJobsInitial) {
-                return const Center(child: CircularProgressIndicator());
+                return HomeRecommendedJobsShimmer();
               }
               // 2. في حالة النجاح
               else if (state is RecommendedJobsSuccess) {

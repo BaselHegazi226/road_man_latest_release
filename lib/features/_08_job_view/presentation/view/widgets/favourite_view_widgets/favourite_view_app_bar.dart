@@ -27,7 +27,7 @@ AppBar favouriteViewAppBar(BuildContext context) {
       Padding(
         padding: EdgeInsets.only(right: screenWidth * .04),
         child: Image.asset(
-          Assets.profileProfileUserImage,
+          Assets.profileDefaultImage,
           width: screenWidth * .08,
           height: screenWidth * .08,
         ),

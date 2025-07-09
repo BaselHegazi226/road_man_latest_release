@@ -12,15 +12,15 @@ class ProgressCubit extends Cubit<ProgressState> {
 
   final HomeRepoImplement _homeRepoImplement;
 
+  bool _hasFetched = false; // ✅ علشان نمنع التحميل المكرر
+
   Future<void> fetchProgress() async {
-    // ✅ منع إعادة التحميل لو البيانات موجودة أو جاري تحميلها
-    if (state is ProgressSuccess || state is ProgressLoading) return;
+    if (_hasFetched) return; // ✅ خلاص اتحمل قبل كده
 
     emit(ProgressLoading());
 
     try {
       final userTokens = await SecureStorageHelper.getUserTokens();
-      print('okkkkkkk');
       if (userTokens != null) {
         var result = await _homeRepoImplement.getProgress(
           token: userTokens.token,
@@ -31,6 +31,7 @@ class ProgressCubit extends Cubit<ProgressState> {
             emit(ProgressFailure(failure.errorMessage ?? ''));
           },
           (data) {
+            _hasFetched = true; // ✅ اتعلم إنه اتحمل
             emit(ProgressSuccess(data));
           },
         );
@@ -41,4 +42,6 @@ class ProgressCubit extends Cubit<ProgressState> {
       emit(ProgressFailure('An unexpected error occurred: ${e.toString()}'));
     }
   }
+
+  /// ✅ إعادة التهيئة إذا خرجنا من الصفحة وعايزين نحمل من جديد بعدين
 }

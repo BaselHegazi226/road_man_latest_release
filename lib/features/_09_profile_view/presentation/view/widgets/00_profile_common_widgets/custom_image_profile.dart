@@ -24,7 +24,7 @@ class CustomImageProfile extends StatelessWidget {
     } else if (File(path).existsSync()) {
       return FileImage(File(path));
     } else {
-      return const AssetImage(Assets.profileProfileUserImage);
+      return const AssetImage(Assets.profileDefaultImage);
     }
   }
 

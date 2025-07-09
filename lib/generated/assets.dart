@@ -56,7 +56,5 @@ class Assets {
   static const String logoAImage = 'assets/images/splash_logo/A.png';
   static const String logoDManImage = 'assets/images/splash_logo/DMan.png';
   static const String profileDefaultImage =
-      'assets/images/profile/profile_image.jpeg';
-  static const String profileProfileUserImage =
-      'assets/images/profile/pprofile.png';
+      'assets/images/profile/profile_image_no_background.png';
 }

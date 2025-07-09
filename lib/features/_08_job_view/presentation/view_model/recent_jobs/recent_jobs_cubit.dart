@@ -9,10 +9,13 @@ part 'recent_jobs_state.dart';
 
 class RecentJobsCubit extends Cubit<RecentJobsState> {
   final JobsRepoImplement _jobsRepo;
+  bool _hasFetched = false;
 
   RecentJobsCubit(this._jobsRepo) : super(RecentJobsInitial());
 
   Future<void> fetchRecentJobs() async {
+    if (_hasFetched) return;
+
     emit(RecentJobsLoading());
 
     try {
@@ -25,6 +28,7 @@ class RecentJobsCubit extends Cubit<RecentJobsState> {
             emit(RecentJobsFailure(failure.errorMessage ?? ''));
           },
           (jobs) {
+            _hasFetched = true;
             emit(RecentJobsSuccess(jobs));
           },
         );
