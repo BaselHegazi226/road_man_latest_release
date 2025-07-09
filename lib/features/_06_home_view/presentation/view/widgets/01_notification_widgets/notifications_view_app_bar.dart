@@ -24,11 +24,11 @@ AppBar notificationViewAppbar(BuildContext context) {
     ),
     actions: [
       IconButton(
-        padding: EdgeInsets.only(right: 16),
+        padding: EdgeInsets.only(right: screenWidth * .04),
         onPressed: () {},
         icon: Icon(
-          CupertinoIcons.clear_circled,
-          size: screenWidth * .07,
+          Icons.delete_outline,
+          size: 28,
           color: kEditProfileIconColor,
         ),
       ),

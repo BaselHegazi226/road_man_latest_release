@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:road_man_project/features/_06_home_view/data/repos/home_repo_implement.dart';
+import 'package:road_man_project/core/utilities/app_get.dart';
+import 'package:road_man_project/core/utilities/shimmer_app.dart';
 import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/01_notification_widgets/notification_view_body.dart';
 import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/01_notification_widgets/notifications_view_app_bar.dart';
 
@@ -13,11 +14,8 @@ class NotificationsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create:
-          (context) =>
-              NotificationCubit(HomeRepoImplement())..fetchAllNotification(),
-
+    return BlocProvider.value(
+      value: AppGet.getIt<NotificationCubit>()..fetchAllNotification(),
       child: Scaffold(
         backgroundColor: kAppPrimaryWhiteColor,
         appBar: notificationViewAppbar(context),
@@ -26,7 +24,7 @@ class NotificationsView extends StatelessWidget {
             if (state is NotificationSuccess) {
               return NotificationViewBody(notifications: state.notifications);
             } else if (state is NotificationLoading) {
-              return Center(child: CircularProgressIndicator());
+              return const NotificationViewShimmer();
             } else if (state is NotificationFailure) {
               return Center(child: Text(state.errorMessage));
             }

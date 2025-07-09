@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:road_man_project/core/helper/const_variables.dart';
-import 'package:road_man_project/features/_06_home_view/data/repos/home_repo_implement.dart';
 import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/00_home_view_widgets/home_view_app_bar.dart';
 import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/00_home_view_widgets/home_view_body.dart';
 import 'package:road_man_project/features/_06_home_view/presentation/view_model/progress_cubit/progress_cubit.dart';
@@ -20,7 +19,15 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       backgroundColor: kAppPrimaryWhiteColor,
       resizeToAvoidBottomInset: true,
-      appBar: homeViewAppbar(context),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: Builder(
+          builder:
+              (context) => homeViewAppbar(
+                context,
+              ), // ده مهم جداً علشان ياخد context جديد تحت الـ BlocProvider
+        ),
+      ),
       body: MultiBlocProvider(
         providers: [
           BlocProvider.value(
@@ -29,11 +36,8 @@ class HomeView extends StatelessWidget {
           BlocProvider.value(
             value: AppGet.getIt<ProgressCubit>()..fetchProgress(),
           ),
-          BlocProvider(
-            create:
-                (context) =>
-                    NotificationCubit(HomeRepoImplement())
-                      ..fetchAllNotification(),
+          BlocProvider.value(
+            value: AppGet.getIt<NotificationCubit>()..fetchAllNotification(),
           ),
           BlocProvider(
             create:

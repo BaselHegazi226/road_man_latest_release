@@ -35,9 +35,19 @@ class NotificationViewItem extends StatelessWidget {
                 NotificationMessageSection(
                   notificationText: notificationModel.text!,
                 ),
-                NotificationAccessTimeSection(
-                  hour:
-                      '${DateTime.now().difference(notificationModel.creationDate).inHours} hours',
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    NotificationAccessTimeSection(
+                      hour:
+                          'ago ${DateTime.now().difference(notificationModel.creationDate).inHours} hours',
+                    ),
+                    Icon(
+                      CupertinoIcons.clear_circled,
+                      size: 24,
+                      color: kAppPrimaryBlackColor,
+                    ),
+                  ],
                 ),
               ],
             ),

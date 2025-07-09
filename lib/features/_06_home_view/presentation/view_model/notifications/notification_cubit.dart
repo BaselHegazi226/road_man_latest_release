@@ -6,10 +6,13 @@ import 'notification_states.dart';
 
 class NotificationCubit extends Cubit<NotificationsState> {
   final HomeRepoImplement _homeRepoImpl;
+  bool _hasFetched = false; // ✅ عشان نمنع التحميل الزائد
 
   NotificationCubit(this._homeRepoImpl) : super(NotificationInitial());
 
   Future<void> fetchAllNotification() async {
+    if (_hasFetched) return; // ✅ لو اتحملت قبل كده، متحملهاش تاني
+
     emit(NotificationLoading());
 
     try {
@@ -24,6 +27,7 @@ class NotificationCubit extends Cubit<NotificationsState> {
             emit(NotificationFailure(failure.errorMessage ?? ''));
           },
           (notifications) {
+            _hasFetched = true; // ✅ أول ما البيانات تجيبها، خزننا انها اتجابت
             emit(NotificationSuccess(notifications));
           },
         );
