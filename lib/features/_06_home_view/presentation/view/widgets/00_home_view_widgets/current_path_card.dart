@@ -3,7 +3,7 @@ import 'package:road_man_project/core/utilities/base_text_styles.dart';
 import 'package:road_man_project/core/utilities/gradients.dart';
 import 'package:road_man_project/generated/assets.dart';
 
-import '../../../../../core/helper/const_variables.dart';
+import '../../../../../../core/helper/const_variables.dart';
 
 class CurrentPathCard extends StatelessWidget {
   const CurrentPathCard({super.key});

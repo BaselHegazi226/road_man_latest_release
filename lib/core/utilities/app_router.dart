@@ -3,13 +3,13 @@ import 'package:road_man_project/features/_01_splash_view2/splash_view2.dart';
 import 'package:road_man_project/features/_03_auth_view/presentation/views/forget_password_view.dart';
 import 'package:road_man_project/features/_03_auth_view/presentation/views/reset_password_view.dart';
 import 'package:road_man_project/features/_03_auth_view/presentation/views/verification_otp_view.dart';
+import 'package:road_man_project/features/_06_home_view/presentation/view/notification_view.dart';
 import 'package:road_man_project/features/_07_learn_view/presentation/view/learning_path_view.dart';
 import 'package:road_man_project/features/_07_learn_view/presentation/view/lesson_view.dart';
 import 'package:road_man_project/features/_07_learn_view/presentation/view/quiz_view.dart';
 import 'package:road_man_project/features/_08_job_view/presentation/view/favourite_view.dart';
 import 'package:road_man_project/features/_08_job_view/presentation/view/job_details_view.dart';
 import 'package:road_man_project/features/_08_job_view/presentation/view/job_view.dart';
-import 'package:road_man_project/features/_08_job_view/presentation/view/notification_view.dart';
 import 'package:road_man_project/features/_09_profile_view/presentation/view/change_password_view.dart';
 import 'package:road_man_project/features/_09_profile_view/presentation/view/profile_forget_password_view.dart';
 

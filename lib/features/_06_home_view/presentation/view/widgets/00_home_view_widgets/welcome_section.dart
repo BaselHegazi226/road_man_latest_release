@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/helper/const_variables.dart';
-import '../../../../../core/utilities/base_text_styles.dart';
+import '../../../../../../core/helper/const_variables.dart';
+import '../../../../../../core/utilities/base_text_styles.dart';
 
 class WelcomeSection extends StatelessWidget {
   const WelcomeSection({super.key});

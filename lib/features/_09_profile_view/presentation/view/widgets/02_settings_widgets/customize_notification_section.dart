@@ -15,7 +15,7 @@ class CustomizeNotificationSection extends StatelessWidget {
       children: [
         CustomIconTitle(
           iconData: Icons.switch_left_outlined,
-          title: 'Customize notification',
+          title: 'Customize notifications',
         ),
         CustomSettingsContainer(
           child: CustomTitleSwitch(title: 'Tests', onChanged: (value) {}),

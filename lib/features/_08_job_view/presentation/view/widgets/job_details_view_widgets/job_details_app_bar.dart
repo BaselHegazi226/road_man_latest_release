@@ -31,7 +31,7 @@ AppBar jobDetailsAppbar(BuildContext context) {
           horizontal: screenWidth * 0.04,
         ), // نسبة 4% من العرض
         onPressed: () {
-          openDashboard(context, const JobViewDashboardViewBody());
+          openDashboard(context, const HomeViewDashboardViewBody());
         },
         icon: Icon(
           Icons.menu_outlined,

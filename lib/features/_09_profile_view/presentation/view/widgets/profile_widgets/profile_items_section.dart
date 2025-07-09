@@ -73,6 +73,9 @@ class _ProfileItemsSectionState extends State<ProfileItemsSection> {
         BlocConsumer<ProfileBloc, ProfileStates>(
           listener: (context, state) {
             if (state is LogOutSuccess) {
+              print(
+                'loooooooooooooooooooooooooooooooooooooooooooooooooog out is success try to sign in',
+              );
               GoRouter.of(context).go(Routes.signInViewId);
             } else if (state is LogOutFailure) {
               showSafeSnackBar(

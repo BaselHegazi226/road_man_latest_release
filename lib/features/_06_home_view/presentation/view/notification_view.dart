@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:road_man_project/features/_08_job_view/data/repos/jobs_repo_implement.dart';
-import 'package:road_man_project/features/_08_job_view/presentation/view/widgets/notification_widgets/notification_view_body.dart';
-import 'package:road_man_project/features/_08_job_view/presentation/view/widgets/notification_widgets/notifications_view_app_bar.dart';
-import 'package:road_man_project/features/_08_job_view/presentation/view_model/recent_jobs/recent_jobs_cubit.dart';
+import 'package:road_man_project/features/_06_home_view/data/repos/home_repo_implement.dart';
+import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/01_notification_widgets/notification_view_body.dart';
+import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/01_notification_widgets/notifications_view_app_bar.dart';
 
 import '../../../../core/helper/const_variables.dart';
+import '../view_model/notifications/notification_cubit.dart';
+import '../view_model/notifications/notification_states.dart';
 
 class NotificationsView extends StatelessWidget {
   const NotificationsView({super.key});
@@ -15,7 +16,7 @@ class NotificationsView extends StatelessWidget {
     return BlocProvider(
       create:
           (context) =>
-              NotificationCubit(JobsRepoImplement())..fetchAllNotification(),
+              NotificationCubit(HomeRepoImplement())..fetchAllNotification(),
 
       child: Scaffold(
         backgroundColor: kAppPrimaryWhiteColor,

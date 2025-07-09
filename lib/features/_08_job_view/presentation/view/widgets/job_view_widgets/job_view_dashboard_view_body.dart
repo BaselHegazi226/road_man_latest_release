@@ -10,15 +10,15 @@ import '../../../../../_09_profile_view/presentation/view/widgets/00_profile_com
 import '../../../../../_09_profile_view/presentation/view_model/profile_blocs/profile_state.dart';
 import 'job_view_dashboard_items_section.dart';
 
-class JobViewDashboardViewBody extends StatefulWidget {
-  const JobViewDashboardViewBody({super.key});
+class HomeViewDashboardViewBody extends StatefulWidget {
+  const HomeViewDashboardViewBody({super.key});
 
   @override
-  State<JobViewDashboardViewBody> createState() =>
-      _JobViewDashboardViewBodyState();
+  State<HomeViewDashboardViewBody> createState() =>
+      _HomeViewDashboardViewBodyState();
 }
 
-class _JobViewDashboardViewBodyState extends State<JobViewDashboardViewBody> {
+class _HomeViewDashboardViewBodyState extends State<HomeViewDashboardViewBody> {
   @override
   void initState() {
     super.initState();

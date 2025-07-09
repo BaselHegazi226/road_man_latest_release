@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:road_man_project/features/_08_job_view/data/model/notification_model.dart';
+import 'package:road_man_project/features/_06_home_view/data/model/notification_model.dart';
 
 import 'notification_day_section.dart';
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:road_man_project/core/manager/user_learning_path_manager/user_learning_path_manager.dart';
+import 'package:road_man_project/core/utilities/app_get.dart';
 import 'package:road_man_project/features/_07_learn_view/data/model/learning_path_question_model.dart';
 
 import 'features/_00_road_man_app/road_man_app.dart';
@@ -32,6 +33,7 @@ void main() async {
   await UserLearningPathHelper.initHiveBoxes();
 
   print('Hive setup completed successfully!');
+  AppGet.setUp();
 
   runApp(const RoadManApp());
 }

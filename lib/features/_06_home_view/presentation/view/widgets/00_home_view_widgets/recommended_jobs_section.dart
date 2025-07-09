@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:road_man_project/core/utilities/base_text_styles.dart';
 
-import '../../view_model/recommended_jobs_cubit/recommended_jobs_cubit.dart';
-import 'recommended_jobs_section_widgets/job_card.dart';
+import '../../../view_model/recommended_jobs_cubit/recommended_jobs_cubit.dart';
+import '../03_recommended_jobs_section_widgets/job_card.dart';
 
 class RecommendedJobsSection extends StatelessWidget {
   const RecommendedJobsSection({super.key});
@@ -28,14 +28,17 @@ class RecommendedJobsSection extends StatelessWidget {
           child: BlocBuilder<RecommendedJobsCubit, RecommendedJobsState>(
             builder: (context, state) {
               // 1. في حالة التحميل أو الحالة المبدئية
-              if (state is RecommendedJobsLoading || state is RecommendedJobsInitial) {
+              if (state is RecommendedJobsLoading ||
+                  state is RecommendedJobsInitial) {
                 return const Center(child: CircularProgressIndicator());
               }
               // 2. في حالة النجاح
               else if (state is RecommendedJobsSuccess) {
                 // التحقق إذا كانت قائمة الوظائف فارغة
                 if (state.jobs.isEmpty) {
-                  return const Center(child: Text('No recommended jobs found.'));
+                  return const Center(
+                    child: Text('No recommended jobs found.'),
+                  );
                 }
                 return ListView.builder(
                   scrollDirection: Axis.horizontal,

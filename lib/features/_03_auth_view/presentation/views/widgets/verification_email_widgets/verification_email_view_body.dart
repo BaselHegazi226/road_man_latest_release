@@ -25,7 +25,10 @@ class VerificationEmailViewBody extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: screenHeight * 0.07),
+            padding: EdgeInsets.only(
+              top: screenHeight * 0.07,
+              bottom: screenHeight * .03,
+            ),
             child: CustomAuthText(
               text:
                   'We have sent a verification code to your email or phone number. Enter the code below to complete the process.',

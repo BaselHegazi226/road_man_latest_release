@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/progress_section.dart';
-import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/recommended_jobs_section.dart';
-import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/welcome_section.dart';
+import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/00_home_view_widgets/progress_section.dart';
+import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/00_home_view_widgets/recommended_jobs_section.dart';
+import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/00_home_view_widgets/welcome_section.dart';
 
 import 'current_path_card.dart';
 
@@ -18,7 +18,11 @@ class HomeViewBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: screenSize.height * .03,
           children: [
-            SizedBox(height: screenSize.height * .04), // Space for top header
+            //SizedBox(height: screenSize.height * .04), // Space for top header
+            // Padding(
+            //   padding: EdgeInsets.only(top: screenSize.height * .02),
+            //   child: jobViewAppbar(context),
+            // ),
             const WelcomeSection(),
             const CurrentPathCard(),
             const ProgressSection(),

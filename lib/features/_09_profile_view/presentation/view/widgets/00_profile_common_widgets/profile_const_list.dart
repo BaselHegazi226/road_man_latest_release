@@ -26,7 +26,7 @@ class ProfileConstList {
     FaqItemModel(
       title: 'How do I get test reminder notifications?',
       subTitle:
-          ' You can activate AI notifications through the notification settings within the app.',
+          ' You can activate AI notifications through the notifications settings within the app.',
     ),
   ];
   static const List<PrivacyPolicyItemModel> privacyPolicyItemModelList = [

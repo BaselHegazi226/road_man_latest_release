@@ -1,32 +1,36 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:road_man_project/features/_06_home_view/data/model/progress_model.dart';
-import 'package:road_man_project/features/_06_home_view/data/repos/progress_repo_implement.dart';
+import 'package:road_man_project/features/_06_home_view/data/repos/home_repo_implement.dart';
 
 import '../../../../../core/manager/tokens_manager.dart';
 
 part 'progress_state.dart';
 
 class ProgressCubit extends Cubit<ProgressState> {
-  ProgressCubit(this._progressRepoImplement) : super(ProgressInitial());
+  ProgressCubit(this._homeRepoImplement) : super(ProgressInitial());
 
-  final ProgressRepoImplement _progressRepoImplement;
+  final HomeRepoImplement _homeRepoImplement;
 
   Future<void> fetchProgress() async {
+    // ✅ منع إعادة التحميل لو البيانات موجودة أو جاري تحميلها
+    if (state is ProgressSuccess || state is ProgressLoading) return;
+
     emit(ProgressLoading());
 
     try {
       final userTokens = await SecureStorageHelper.getUserTokens();
       print('okkkkkkk');
       if (userTokens != null) {
-        var result = await _progressRepoImplement.getProgress(token: userTokens.token);
+        var result = await _homeRepoImplement.getProgress(
+          token: userTokens.token,
+        );
 
         result.fold(
-              (failure) {
-            emit(ProgressFailure
-              (failure.errorMessage ?? ''));
+          (failure) {
+            emit(ProgressFailure(failure.errorMessage ?? ''));
           },
-              (data) {
+          (data) {
             emit(ProgressSuccess(data));
           },
         );

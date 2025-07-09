@@ -24,7 +24,7 @@ class JobCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: kSecondlyLightWhiteColor,
         borderRadius: BorderRadius.circular(screenSize.width * 0.04), // 4%
-        border: Border.all(width: 1, color: const Color(0xFF2352A1)),
+        border: Border.all(width: 1, color: kAppPrimaryBlueColor),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +53,17 @@ class JobCard extends StatelessWidget {
               SizedBox(
                 width: screenSize.width * 0.3,
                 child: Text(
-                  job.company ?? 'N/A',
+                  (job.company ?? 'N/A')
+                      .trim() // يمسح المسافات قبل وبعد
+                      .replaceAll('\n', ' ')
+                      .replaceAll('"', '') // يمنع كسر السطر
+                      .replaceAll(
+                        RegExp(r'\s+'),
+                        ' ',
+                      ), // يمنع المسافات المتكررة
+                  maxLines: 1,
+                  softWrap: false,
+                  overflow: TextOverflow.ellipsis,
                   style: AfacadTextStyles.textStyle12W700Black(context),
                 ),
               ),
@@ -84,13 +94,27 @@ class JobCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: screenSize.width * 0.3,
+                width: screenSize.width * 0.2,
                 child: Text(
-                  job.location ?? 'N/A',
+                  (job.location ?? 'N/A')
+                      .trim() // يمسح المسافات قبل وبعد
+                      .replaceAll('\n', ' ')
+                      .replaceAll('"', '') // يمنع كسر السطر
+                      .replaceAll(
+                        RegExp(r'\s+'),
+                        ' ',
+                      ), // يمنع المسافات المتكررة
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
                   style: AfacadTextStyles.textStyle14W400Grey(context),
                 ),
               ),
-              ApplyButton(onTap: () {}),
+              ApplyButton(
+                onTap: () {
+                  print('job location: ${job.location}');
+                },
+              ),
             ],
           ),
         ],

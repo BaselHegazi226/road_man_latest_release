@@ -6,6 +6,8 @@ import 'package:road_man_project/features/_06_home_view/data/repos/home_repo.dar
 
 import '../../../../core/error/failure.dart';
 import '../model/job_model.dart';
+import '../model/notification_model.dart';
+import '../model/progress_model.dart';
 
 class HomeRepoImplement implements HomeRepository {
   final Dio dio = Dio();
@@ -34,6 +36,73 @@ class HomeRepoImplement implements HomeRepository {
 
         final jobs = data.map((jobJson) => JobModel.fromJson(jobJson)).toList();
         return Right(jobs);
+      } else {
+        return left(ServerFailure(errorMessage: 'Failed to fetch questions.'));
+      }
+    } on DioException catch (dioException) {
+      log('DioException: ${dioException.message}');
+      return left(ServerFailure(errorMessage: dioException.error.toString()));
+    } catch (e) {
+      log('Unexpected error: $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<NotificationModel>>> getAllNotification({
+    required String token,
+  }) async {
+    final String notificationPath = '$baseUrl/Notifications/All-Notifications';
+
+    try {
+      final response = await dio.get(
+        notificationPath,
+        options: Options(headers: {'Authorization': "Bearer $token"}),
+      );
+
+      log('Response Status Code: ${response.statusCode}');
+      log('Response Data: ${response.data}');
+
+      if (response.statusCode == 200) {
+        final List<dynamic> data = response.data;
+
+        final notifications =
+            data
+                .map(
+                  (json) =>
+                      NotificationModel.fromJson(json as Map<String, dynamic>),
+                )
+                .toList();
+
+        return Right(notifications);
+      } else {
+        return left(
+          ServerFailure(errorMessage: 'Failed to fetch notifications.'),
+        );
+      }
+    } on DioException catch (dioException) {
+      log('DioException: ${dioException.message}');
+      return left(ServerFailure(errorMessage: dioException.error.toString()));
+    } catch (e) {
+      log('Unexpected error: $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, ProgressModel>> getProgress({
+    required String token,
+  }) async {
+    final String path = '$baseUrl/Recommendation/LearningPath/ProgressSummary';
+
+    try {
+      final response = await dio.get(
+        path,
+        options: Options(headers: {'Authorization': "Bearer $token"}),
+      );
+
+      if (response.statusCode == 200) {
+        return Right(ProgressModel.fromJson(response.data));
       } else {
         return left(ServerFailure(errorMessage: 'Failed to fetch questions.'));
       }

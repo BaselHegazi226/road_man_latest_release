@@ -66,6 +66,7 @@ class SecureStorageHelper {
 
   // دالة لمسح كل التوكنات من التخزين
   static Future<void> clearTokens() async {
+    print('token is deletedddddddddddddddddddddddd');
     await _storage.delete(key: 'token');
     await _storage.delete(key: 'refreshToken');
     await _storage.delete(key: 'tokenExpiration');

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:road_man_project/core/helper/const_variables.dart';
 import 'package:road_man_project/features/_05_main_view/presentation/view/widgets/main_view_widget/custom_bottom_nav_bar.dart';
 
-import '../../../_06_home_view/home_view.dart';
+import '../../../_06_home_view/presentation/view/home_view.dart';
 import '../../../_07_learn_view/presentation/view/learning_path_view.dart';
 import '../../../_08_job_view/presentation/view/job_view.dart';
 import '../../../_09_profile_view/presentation/view/profile_view.dart';

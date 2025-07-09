@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../recent_jobs_widgets/recent_jobs_section.dart';
-import '../search_bar_widgets/job_view_search_bar_section.dart';
 import '../suggested_jobs_widgets/suggested_jobs_card_section.dart';
 
 class JobViewBody extends StatelessWidget {
@@ -19,7 +18,8 @@ class JobViewBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: screenHeight * 0.025, // تباعد ديناميكي بين العناصر
         children: [
-          const JobViewSearchBarSection(),
+          //const JobViewSearchBarSection(),
+          SizedBox(height: screenHeight * .02),
           const SuggestedJobsCardSection(),
           const RecentJobsSection(),
         ],

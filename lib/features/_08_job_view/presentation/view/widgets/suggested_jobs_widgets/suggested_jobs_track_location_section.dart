@@ -30,41 +30,70 @@ class SuggestedJobsTrackLocationSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SvgPicture.asset(
-              image,
-              width: screenWidth * 0.08, // 8% من عرض الشاشة
-              height: screenWidth * 0.08,
-              placeholderBuilder:
-                  (context) => const CircularProgressIndicator(),
-            ),
-            SizedBox(width: screenWidth * 0.02), // مسافة بين الصورة والعناصر
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: AfacadTextStyles.textStyle16W500Black(context),
-                ),
-                SizedBox(height: screenWidth * 0.01), // مسافة صغيرة بين النصوص
-                Row(
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SvgPicture.asset(
+                image,
+                width: screenWidth * 0.08,
+                height: screenWidth * 0.08,
+                placeholderBuilder:
+                    (context) => const CircularProgressIndicator(),
+              ),
+              SizedBox(width: screenWidth * 0.02),
+              Expanded(
+                // 🔁 مهم عشان يمنع overflow في النصوص
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      company,
-                      style: AfacadTextStyles.textStyle14W400Grey(context),
+                      title
+                          .trim()
+                          .replaceAll('\n', ' ')
+                          .replaceAll('"', '')
+                          .replaceAll(RegExp(r'\s+'), ' '),
+                      style: AfacadTextStyles.textStyle16W500Black(context),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    SizedBox(width: screenWidth * 0.01), // مسافة صغيرة
-                    Text(
-                      location,
-                      style: AfacadTextStyles.textStyle14W400Grey(context),
+                    SizedBox(height: screenWidth * 0.01),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            company
+                                .replaceAll('\n', ' ')
+                                .replaceAll('"', '')
+                                .replaceAll(RegExp(r'\s+'), ' '),
+                            style: AfacadTextStyles.textStyle14W400Grey(
+                              context,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        SizedBox(width: screenWidth * 0.01),
+                        Expanded(
+                          child: Text(
+                            location
+                                .replaceAll('\n', ' ')
+                                .replaceAll('"', '')
+                                .replaceAll(RegExp(r'\s+'), ' '),
+                            style: AfacadTextStyles.textStyle14W400Grey(
+                              context,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
         buildValueListenableBuilderIcon(screenWidth),
       ],
