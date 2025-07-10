@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:road_man_project/core/utilities/app_get.dart';
-import 'package:road_man_project/core/utilities/shimmer_app.dart';
 import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/01_notification_widgets/notification_view_body.dart';
 import 'package:road_man_project/features/_06_home_view/presentation/view/widgets/01_notification_widgets/notifications_view_app_bar.dart';
 
 import '../../../../core/helper/const_variables.dart';
+import '../../../../core/shimmer/home_shimmer/notification_view_shimmer.dart';
 import '../view_model/notifications/notification_cubit.dart';
 import '../view_model/notifications/notification_states.dart';
 

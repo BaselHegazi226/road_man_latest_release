@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:road_man_project/core/helper/const_variables.dart';
-import 'package:road_man_project/core/utilities/shimmer_app.dart';
 import 'package:road_man_project/core/utilities/show_snack_bar.dart';
 import 'package:road_man_project/features/_09_profile_view/presentation/view/widgets/profile_widgets/profile_items_section.dart';
 import 'package:road_man_project/features/_09_profile_view/presentation/view_model/get_user_info_cubit/get_user_info_cubit.dart';
@@ -9,6 +8,7 @@ import 'package:road_man_project/features/_09_profile_view/presentation/view_mod
 
 import '../../../../../../core/manager/tokens_manager.dart';
 import '../../../../../../core/manager/user_info_manager.dart';
+import '../../../../../../core/shimmer/profile_shimmer/profile_user_info_shimmer.dart';
 import '../../../../../../generated/assets.dart';
 import '../../../view_model/profile_blocs/profile_state.dart';
 import '../00_profile_common_widgets/profile_user_info.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:road_man_project/core/utilities/base_text_styles.dart';
-import 'package:road_man_project/core/utilities/shimmer_app.dart';
 
+import '../../../../../../core/shimmer/home_shimmer/home_recommend_jobs_shimmer.dart';
 import '../../../view_model/recommended_jobs_cubit/recommended_jobs_cubit.dart';
 import '../03_recommended_jobs_section_widgets/job_card.dart';
 

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:road_man_project/core/utilities/shimmer_app.dart';
 import 'package:road_man_project/features/_08_job_view/data/model/job_view_card_model.dart';
 import 'package:road_man_project/features/_08_job_view/presentation/view/widgets/recent_jobs_widgets/recent_job_card.dart';
 import 'package:road_man_project/features/_08_job_view/presentation/view_model/recent_jobs/recent_jobs_cubit.dart';
+
+import '../../../../../../core/shimmer/job_shimmer/recent_job_card_shimmer.dart';
 
 class RecentJobsCardListView extends StatelessWidget {
   final List<JobViewCardModel> recentJobsCardItemModelList;
