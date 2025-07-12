@@ -12,10 +12,10 @@ class ProgressCubit extends Cubit<ProgressState> {
 
   final HomeRepoImplement _homeRepoImplement;
 
-  bool _hasFetched = false; // ✅ علشان نمنع التحميل المكرر
+  //bool _hasFetched = false; // ✅ علشان نمنع التحميل المكرر
 
   Future<void> fetchProgress() async {
-    if (_hasFetched) return; // ✅ خلاص اتحمل قبل كده
+    //if (_hasFetched) return; // ✅ خلاص اتحمل قبل كده
 
     emit(ProgressLoading());
 
@@ -31,7 +31,7 @@ class ProgressCubit extends Cubit<ProgressState> {
             emit(ProgressFailure(failure.errorMessage ?? ''));
           },
           (data) {
-            _hasFetched = true; // ✅ اتعلم إنه اتحمل
+            //        _hasFetched = true; // ✅ اتعلم إنه اتحمل
             emit(ProgressSuccess(data));
           },
         );

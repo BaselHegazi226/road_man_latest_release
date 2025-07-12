@@ -95,7 +95,9 @@ class _QuizViewBodyState extends State<QuizViewBody> {
 
   void _handleFinish() async {
     final totalQuestions = widget.learnPathQuizModel.questions.length;
-    final answeredQuestionsCount = widget.selectedAnswers.values.length;
+    //final answeredQuestionsCount = widget.selectedAnswers.values.length;
+    final answeredQuestionsCount =
+        widget.selectedAnswers.values.where((v) => v != null).length;
     final remainingQuestions = totalQuestions - answeredQuestionsCount;
 
     if (answeredQuestionsCount == totalQuestions) {
@@ -195,33 +197,35 @@ class _QuizViewBodyState extends State<QuizViewBody> {
                   );
                 },
                 builder: (context, state) {
-                  return CustomTextButton(
-                    onPressed:
-                        isLoadingButton || isFinished
-                            ? null
-                            : () {
-                              final currentAnswered =
-                                  widget.selectedAnswers.values.length;
-                              context.read<LearningPathBloc>().add(
-                                QuizCompletedEvent(
-                                  userToken: userToken,
-                                  quizId: widget.learnPathQuizModel.id,
-                                  questionsAnswered: currentAnswered,
-                                ),
-                              );
-                              _handleFinish();
-                            },
-                    buttonWidth: screenWidth * 0.35,
-                    buttonHeight: screenHeight * 0.04,
-                    backgroundColor:
-                        _areAllQuestionsAnswered()
-                            ? kAppPrimaryBlueColor
-                            : kQuizViewSecondlyColor,
-                    child:
-                        isLoadingButton
-                            ? const CustomCircleIndicator(width: 2)
-                            : CustomTitle(title: 'Finish', size: 16),
-                  );
+                  return isFinished
+                      ? const SizedBox.shrink()
+                      : CustomTextButton(
+                        onPressed:
+                            isLoadingButton || isFinished
+                                ? null
+                                : () {
+                                  final currentAnswered =
+                                      widget.selectedAnswers.values.length;
+                                  context.read<LearningPathBloc>().add(
+                                    QuizCompletedEvent(
+                                      userToken: userToken,
+                                      quizId: widget.learnPathQuizModel.id,
+                                      questionsAnswered: currentAnswered,
+                                    ),
+                                  );
+                                  _handleFinish();
+                                },
+                        buttonWidth: screenWidth * 0.35,
+                        buttonHeight: screenHeight * 0.04,
+                        backgroundColor:
+                            _areAllQuestionsAnswered()
+                                ? kAppPrimaryBlueColor
+                                : kQuizViewSecondlyColor,
+                        child:
+                            isLoadingButton
+                                ? const CustomCircleIndicator(width: 2)
+                                : CustomTitle(title: 'Finish', size: 16),
+                      );
                 },
               ),
             );

@@ -17,24 +17,32 @@ import 'features/_07_learn_view/data/model/learn_path_user_answer_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // تهيئة Firebase
+
   await Firebase.initializeApp();
 
   final appDir = await getApplicationDocumentsDirectory();
   Hive.init(appDir.path);
 
+  // ✅ Register Hive Adapters
   Hive.registerAdapter(LearnPathModelAdapter());
   Hive.registerAdapter(LearnPathLessonModelAdapter());
   Hive.registerAdapter(LearnPathQuizModelAdapter());
   Hive.registerAdapter(LearningPathQuestionModelAdapter());
   Hive.registerAdapter(LearnPathAnswerModelAdapter());
   Hive.registerAdapter(LearnPathUserAnswerModelAdapter());
-  Hive.registerAdapter(LearnPathLessonCompletedModelAdapter()); // ✅ أضف هذا
+  Hive.registerAdapter(LearnPathLessonCompletedModelAdapter());
 
-  await UserLearningPathHelper.initHiveBoxes();
+  // ✅ هذه أهم خطوة: نضمن أن التوكن تم تحميله قبل استخدامه في الصناديق
+  try {
+    await UserLearningPathHelper.ensureInitialized();
+    await UserLearningPathHelper.initHiveBoxes();
+  } catch (e) {
+    print('⚠️ Hive boxes for learning path not initialized: $e');
+  }
+
   await LocalNotificationHelper.initNotificationBox();
 
-  print('Hive setup completed successfully!');
+  print('✅ Hive setup completed successfully!');
   AppGet.setUp();
 
   runApp(const RoadManApp());
