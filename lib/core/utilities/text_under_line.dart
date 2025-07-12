@@ -21,7 +21,7 @@ class TextUnderLine extends StatelessWidget {
     return Text(
       textAlign: TextAlign.center,
       text,
-      style: AfacadTextStyles.textStyle16W600HBlue(context).copyWith(
+      style: AfacadTextStyles.textStyle16W600Blue(context).copyWith(
         color: textColor,
         decoration: TextDecoration.underline,
         decorationColor: textColor.withAlpha(126),

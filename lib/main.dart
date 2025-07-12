@@ -2,10 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:road_man_project/core/manager/user_learning_path_manager/user_learning_path_manager.dart';
+import 'package:road_man_project/core/manager/user_learning_path_manager.dart';
 import 'package:road_man_project/core/utilities/app_get.dart';
 import 'package:road_man_project/features/_07_learn_view/data/model/learning_path_question_model.dart';
 
+import 'core/manager/local_notification_helper.dart';
 import 'features/_00_road_man_app/road_man_app.dart';
 import 'features/_07_learn_view/data/model/learn_path_answer_model.dart';
 import 'features/_07_learn_view/data/model/learn_path_lesson_completed_model.dart'; // ⬅️ مهم!
@@ -31,6 +32,7 @@ void main() async {
   Hive.registerAdapter(LearnPathLessonCompletedModelAdapter()); // ✅ أضف هذا
 
   await UserLearningPathHelper.initHiveBoxes();
+  await LocalNotificationHelper.initNotificationBox();
 
   print('Hive setup completed successfully!');
   AppGet.setUp();

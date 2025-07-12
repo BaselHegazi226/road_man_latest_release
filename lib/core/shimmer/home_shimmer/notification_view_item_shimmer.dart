@@ -58,3 +58,23 @@ class NotificationViewItemShimmer extends StatelessWidget {
     );
   }
 }
+
+class NotificationsClearAllShimmerText extends StatelessWidget {
+  const NotificationsClearAllShimmerText({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: Text(
+        'Clear All',
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: Colors.grey[300], // اللون نفس لون الشيمر الأساسي
+        ),
+      ),
+    );
+  }
+}

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:road_man_project/core/manager/tokens_manager.dart';
-import 'package:road_man_project/core/manager/user_learning_path_manager/user_learning_path_manager.dart';
+import 'package:road_man_project/core/manager/user_learning_path_manager.dart';
 import 'package:road_man_project/features/_07_learn_view/data/model/learn_path_lesson_model.dart';
 import 'package:road_man_project/features/_07_learn_view/presentation/view/widgets/lesson_view_widgets/lesson_view_card.dart';
 import 'package:road_man_project/features/_07_learn_view/presentation/view_model/learning_path_bloc/learning_path_cubit/learning_path_cubit.dart';

@@ -15,7 +15,7 @@ import 'package:road_man_project/features/_07_learn_view/presentation/view/widge
 import 'package:road_man_project/features/_07_learn_view/presentation/view/widgets/learning_path_view_widgets/step_style_helper.dart';
 
 import '../../../../../../core/helper/const_variables.dart';
-import '../../../../../../core/manager/user_learning_path_manager/user_learning_path_manager.dart';
+import '../../../../../../core/manager/user_learning_path_manager.dart';
 import '../../../../../../generated/Assets.dart';
 import '../../../view_model/learning_path_bloc/learning_path_cubit/learning_path_cubit.dart';
 import '../../../view_model/learning_path_bloc/learning_path_cubit/learning_path_states.dart';
@@ -41,6 +41,7 @@ class _LearningPathViewBodyState extends State<LearningPathViewBody> {
   Future<void> _loadLearningPaths() async {
     final cubit = BlocProvider.of<LearningPathCubit>(context);
     final existingPaths = UserLearningPathHelper.getAllLearningPaths();
+    print('existing paths = $existingPaths');
 
     if (existingPaths.isEmpty) {
       final userTokenModel = await SecureStorageHelper.getUserTokens();
@@ -48,6 +49,13 @@ class _LearningPathViewBodyState extends State<LearningPathViewBody> {
 
       if (userTokenModel != null) {
         await cubit.getLearningPathFun(userToken: userTokenModel.token);
+
+        /// ✅ ده الجزء المهم جداً:
+        final currentState = cubit.state;
+        if (currentState is LearningPathSuccess) {
+          print("✅ Calling _handleLearningPathSuccess manually...");
+          _handleLearningPathSuccess(currentState);
+        }
       } else {
         showSafeSnackBar(
           context,
@@ -68,7 +76,7 @@ class _LearningPathViewBodyState extends State<LearningPathViewBody> {
         (state.learningPath['learningPath'] as List)
             .map((e) => LearnPathModel.fromJson(e as Map<String, dynamic>))
             .toList();
-
+    print('✅ fetchedPaths from API = $fetchedPaths');
     final allLessons = <LearnPathLessonModel>[];
     final allQuizzes = <LearnPathQuizModel>[];
 
@@ -128,7 +136,7 @@ class _LearningPathViewBodyState extends State<LearningPathViewBody> {
 
     final isEven = levelIndex % 2 == 0;
 
-    final int progressForStyle =
+    final int? progressForStyle =
         isEnabled
             ? (currentLevel.progressStatus == 0
                 ? 1
@@ -240,6 +248,8 @@ class _LearningPathViewBodyState extends State<LearningPathViewBody> {
         }
 
         if (localLearningPaths.isEmpty) {
+          print('leaning path = $localLearningPaths');
+          print('leaning path length = ${localLearningPaths.length}');
           return Center(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth * .016),

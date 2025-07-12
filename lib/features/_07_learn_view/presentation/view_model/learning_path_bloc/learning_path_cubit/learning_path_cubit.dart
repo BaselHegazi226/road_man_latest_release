@@ -3,7 +3,7 @@ import 'package:road_man_project/features/_07_learn_view/data/model/learn_path_m
 import 'package:road_man_project/features/_07_learn_view/data/model/learn_path_user_answer_model.dart';
 import 'package:road_man_project/features/_07_learn_view/data/repos/learning_path_repo.dart';
 
-import '../../../../../../core/manager/user_learning_path_manager/user_learning_path_manager.dart';
+import '../../../../../../core/manager/user_learning_path_manager.dart';
 import '../../../../data/model/learn_path_lesson_completed_model.dart';
 import 'learning_path_states.dart';
 

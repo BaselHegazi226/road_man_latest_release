@@ -9,7 +9,7 @@ import 'package:road_man_project/features/_07_learn_view/presentation/view_model
 import 'package:road_man_project/features/_07_learn_view/presentation/view_model/learning_path_bloc/learning_path_cubit/learning_path_states.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-import '../../../../../../core/manager/user_learning_path_manager/user_learning_path_manager.dart';
+import '../../../../../../core/manager/user_learning_path_manager.dart';
 import '../../../../data/model/learn_path_lesson_completed_model.dart';
 import '../../../../data/model/learn_path_lesson_model.dart';
 import '../../../view_model/learning_path_bloc/learning_path_blocs/Learning_path_events.dart';

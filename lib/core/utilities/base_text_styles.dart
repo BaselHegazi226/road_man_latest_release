@@ -256,7 +256,7 @@ class AfacadTextStyles extends BaseTextStyles {
         fontWeight: FontWeight.w600,
       ).getTextStyle(context);
 
-  static TextStyle textStyle16W600HBlue(BuildContext context) =>
+  static TextStyle textStyle16W600Blue(BuildContext context) =>
       const AfacadTextStyles(
         color: kAppPrimaryBlueColor,
         fontSize: 16,

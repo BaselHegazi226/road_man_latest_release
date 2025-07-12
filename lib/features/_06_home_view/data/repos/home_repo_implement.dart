@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:road_man_project/core/manager/tokens_manager.dart';
 import 'package:road_man_project/features/_06_home_view/data/repos/home_repo.dart';
 
 import '../../../../core/error/failure.dart';
@@ -65,6 +66,7 @@ class HomeRepoImplement implements HomeRepository {
 
       if (response.statusCode == 200) {
         final List<dynamic> data = response.data;
+        print('notifications from rrrrrrrrrrrrrrrrrrrrepo: $data');
 
         final notifications =
             data
@@ -73,7 +75,9 @@ class HomeRepoImplement implements HomeRepository {
                       NotificationModel.fromJson(json as Map<String, dynamic>),
                 )
                 .toList();
-
+        print(
+          'notification lengthhhhhhhhhhhhhhhhhhhh : ${notifications.length}',
+        );
         return Right(notifications);
       } else {
         return left(
@@ -105,6 +109,67 @@ class HomeRepoImplement implements HomeRepository {
         return Right(ProgressModel.fromJson(response.data));
       } else {
         return left(ServerFailure(errorMessage: 'Failed to fetch questions.'));
+      }
+    } on DioException catch (dioException) {
+      log('DioException: ${dioException.message}');
+      return left(ServerFailure(errorMessage: dioException.error.toString()));
+    } catch (e) {
+      log('Unexpected error: $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteAllNotifications() async {
+    final String path = '$baseUrl/Notifications/Delete-All-Notifications';
+
+    try {
+      final tokenModel = await SecureStorageHelper.getUserTokens();
+      final response = await dio.delete(
+        path,
+        options: Options(
+          headers: {'Authorization': "Bearer ${tokenModel!.token}"},
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        return Right(null);
+      } else {
+        return left(
+          ServerFailure(errorMessage: 'Failed to delete notifications'),
+        );
+      }
+    } on DioException catch (dioException) {
+      log('DioException: ${dioException.message}');
+      return left(ServerFailure(errorMessage: dioException.error.toString()));
+    } catch (e) {
+      log('Unexpected error: $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteNotificationById({
+    required int id,
+  }) async {
+    final String path = '$baseUrl/Notifications/Notification/$id';
+
+    try {
+      final tokenModel = await SecureStorageHelper.getUserTokens();
+      final response = await dio.delete(
+        path,
+        options: Options(
+          headers: {'Authorization': "Bearer ${tokenModel!.token}"},
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        print('${response.data}');
+        return Right(null);
+      } else {
+        return left(
+          ServerFailure(errorMessage: 'Failed to delete notification'),
+        );
       }
     } on DioException catch (dioException) {
       log('DioException: ${dioException.message}');

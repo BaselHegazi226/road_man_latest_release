@@ -20,7 +20,7 @@ class TwoTitle extends StatelessWidget {
           onPressed: title2onPressed,
           child: Text(
             title2,
-            style: AfacadTextStyles.textStyle16W600HBlue(context),
+            style: AfacadTextStyles.textStyle16W600Blue(context),
           ),
         ),
       ],

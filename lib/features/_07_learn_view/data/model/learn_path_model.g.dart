@@ -19,7 +19,7 @@ class LearnPathModelAdapter extends TypeAdapter<LearnPathModel> {
     return LearnPathModel(
       levelNumber: fields[0] as int,
       id: fields[1] as int,
-      progressStatus: fields[2] as int,
+      progressStatus: fields[2] as int?,
       trackResourceId: fields[3] as int,
       url: fields[4] as String,
       title: fields[5] as String,

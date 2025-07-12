@@ -18,7 +18,7 @@ class NavigationButtons extends StatelessWidget {
     required this.onPrevious,
     required this.onNext,
     this.showNext = true,
-    this.isFinish = false
+    this.isFinish = false,
   });
 
   @override
@@ -45,12 +45,12 @@ class NavigationButtons extends StatelessWidget {
                   ),
                   Text(
                     'Previous',
-                    style: AfacadTextStyles.textStyle16W600HBlue(context),
+                    style: AfacadTextStyles.textStyle16W600Blue(context),
                   ),
                 ],
               ),
             ),
-          if(showNext)
+          if (showNext)
             TextButton(
               onPressed: onNext,
               child: Row(
@@ -58,12 +58,12 @@ class NavigationButtons extends StatelessWidget {
                 children: [
                   Text(
                     !isFinish ? 'Next' : 'Finish',
-                    style: AfacadTextStyles.textStyle16W600HBlue(context),
+                    style: AfacadTextStyles.textStyle16W600Blue(context),
                   ),
                   const Icon(Icons.arrow_forward_ios, size: 16),
                 ],
               ),
-            )
+            ),
         ],
       ),
     );

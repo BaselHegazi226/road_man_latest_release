@@ -13,4 +13,6 @@ abstract class HomeRepository {
   Future<Either<Failure, List<NotificationModel>>> getAllNotification({
     required String token,
   });
+  Future<Either<Failure, void>> deleteAllNotifications();
+  Future<Either<Failure, void>> deleteNotificationById({required int id});
 }

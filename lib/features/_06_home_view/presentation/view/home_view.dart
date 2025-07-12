@@ -9,7 +9,7 @@ import 'package:road_man_project/features/_06_home_view/presentation/view_model/
 import '../../../../core/utilities/app_get.dart';
 import '../../../_09_profile_view/data/repos/profile_repos/profile_repos_implementation.dart';
 import '../../../_09_profile_view/presentation/view_model/get_user_info_cubit/get_user_info_cubit.dart';
-import '../view_model/notifications/notification_cubit.dart';
+import '../view_model/notifications/notifications_cubit.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -37,7 +37,7 @@ class HomeView extends StatelessWidget {
             value: AppGet.getIt<ProgressCubit>()..fetchProgress(),
           ),
           BlocProvider.value(
-            value: AppGet.getIt<NotificationCubit>()..fetchAllNotification(),
+            value: AppGet.getIt<NotificationsCubit>()..fetchAllNotification(),
           ),
           BlocProvider(
             create:

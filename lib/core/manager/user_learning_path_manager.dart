@@ -43,6 +43,11 @@ abstract class UserLearningPathHelper {
     for (var item in list) {
       await box.put(item.id, item);
     }
+
+    // 🧪 طباعة للتأكد من التخزين
+    final storedPaths = box.values.toList();
+    print('✅ Stored learning paths count = ${storedPaths.length}');
+    print('✅ Stored learning paths data = $storedPaths');
   }
 
   // Save Lessons

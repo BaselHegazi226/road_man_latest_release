@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:road_man_project/core/error/failure.dart';
-import 'package:road_man_project/core/manager/user_learning_path_manager/user_learning_path_manager.dart';
+import 'package:road_man_project/core/manager/user_learning_path_manager.dart';
 import 'package:road_man_project/features/_07_learn_view/data/model/learn_path_lesson_completed_model.dart';
 import 'package:road_man_project/features/_07_learn_view/data/model/learning_path_response.dart';
 import 'package:road_man_project/features/_07_learn_view/data/repos/learning_path_repo.dart';

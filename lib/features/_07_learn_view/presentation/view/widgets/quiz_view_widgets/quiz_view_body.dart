@@ -15,7 +15,7 @@ import 'package:road_man_project/features/_07_learn_view/presentation/view_model
 import 'package:road_man_project/features/_07_learn_view/presentation/view_model/learning_path_bloc/learning_path_cubit/learning_path_cubit.dart';
 import 'package:road_man_project/features/_07_learn_view/presentation/view_model/learning_path_bloc/learning_path_cubit/learning_path_states.dart';
 
-import '../../../../../../core/manager/user_learning_path_manager/user_learning_path_manager.dart';
+import '../../../../../../core/manager/user_learning_path_manager.dart';
 
 class QuizViewBody extends StatefulWidget {
   final Map<int, int?> selectedAnswers;

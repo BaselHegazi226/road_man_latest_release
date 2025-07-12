@@ -15,69 +15,78 @@ class NotificationDaySection extends StatelessWidget {
 
     if (notifications.isEmpty) {
       return SliverToBoxAdapter(
-        child: Center(
-          child: Text(
-            'Not Yet Notifications Now!',
-            textAlign: TextAlign.center,
-            style: AfacadTextStyles.textStyle16W600Grey(context),
+        child: SizedBox(
+          height: screenHeight * .6,
+          child: Center(
+            child: Text(
+              'No Notifications Now! 🔔🔔 ',
+              textAlign: TextAlign.center,
+              style: AfacadTextStyles.textStyle20W600Blue(context),
+            ),
           ),
         ),
       );
     }
 
+    /// ✅ تجميع الإشعارات حسب تاريخ اليوم فقط (دون وقت)
+    final Map<DateTime, List<NotificationModel>> groupedNotifications = {};
+
+    for (final notification in notifications) {
+      final creationDate = notification.creationDate;
+      final dateOnly = DateTime(
+        creationDate.year,
+        creationDate.month,
+        creationDate.day,
+      );
+
+      groupedNotifications.putIfAbsent(dateOnly, () => []);
+      groupedNotifications[dateOnly]!.add(notification);
+    }
+
+    /// ✅ ترتيب التواريخ تنازليًا (الأحدث أولًا)
+    final sortedDates =
+        groupedNotifications.keys.toList()..sort((a, b) => b.compareTo(a));
+
     return SliverList(
       delegate: SliverChildBuilderDelegate((context, index) {
-        final DateTime currentDate = DateTime.now().subtract(
-          Duration(days: index),
-        );
-        final String dayText = _formatDayText(currentDate, index);
-
-        // تصفية الإشعارات الخاصة بهذا اليوم فقط
+        final currentDate = sortedDates[index];
+        final String dayText = _formatDayText(currentDate);
         final List<NotificationModel> notificationsForDay =
-            notifications.where((notification) {
-              return _isSameDay(notification.creationDate, currentDate);
-            }).toList();
+            groupedNotifications[currentDate]!;
 
-        if (notificationsForDay.isEmpty) {
-          return const SizedBox(); // تجاهل اليوم لو مفيش إشعارات
-        }
-
-        return Padding(
-          padding: EdgeInsets.only(bottom: screenHeight * .02),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              NotificationViewDayText(dayText: dayText, dateTime: currentDate),
-              SizedBox(height: screenHeight * 0.01),
-              ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: notificationsForDay.length,
-                itemBuilder: (context, itemIndex) {
-                  return Padding(
-                    padding: EdgeInsets.only(bottom: screenHeight * .015),
-                    child: NotificationViewItem(
-                      notificationModel: notificationsForDay[itemIndex],
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: screenHeight * 0.01,
+          children: [
+            NotificationViewDayText(dayText: dayText, dateTime: currentDate),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: notificationsForDay.length,
+              itemBuilder: (context, itemIndex) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: NotificationViewItem(
+                    notificationModel: notificationsForDay[itemIndex],
+                  ),
+                );
+              },
+            ),
+            SizedBox(height: screenHeight * 0.015),
+          ],
         );
-      }, childCount: notifications.length),
+      }, childCount: sortedDates.length),
     );
   }
 
-  String _formatDayText(DateTime date, int index) {
-    if (index == 0) return "Today";
-    if (index == 1) return "Yesterday";
-    return "${date.day}/${date.month}/${date.year}";
-  }
+  String _formatDayText(DateTime date) {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final yesterday = today.subtract(const Duration(days: 1));
+    final dateOnly = DateTime(date.year, date.month, date.day);
 
-  bool _isSameDay(DateTime date1, DateTime date2) {
-    return date1.year == date2.year &&
-        date1.month == date2.month &&
-        date1.day == date2.day;
+    if (dateOnly == today) return "Today";
+    if (dateOnly == yesterday) return "Yesterday";
+    return "${date.day}/${date.month}/${date.year}";
   }
 }

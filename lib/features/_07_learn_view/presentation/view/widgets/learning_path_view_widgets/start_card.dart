@@ -13,7 +13,7 @@ class StartCard extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         SvgPicture.asset(Assets.learningPathCardImage, height: 51, width: 80),
-        Text('Start', style: AfacadTextStyles.textStyle16W600HBlue(context)),
+        Text('Start', style: AfacadTextStyles.textStyle16W600Blue(context)),
       ],
     );
   }

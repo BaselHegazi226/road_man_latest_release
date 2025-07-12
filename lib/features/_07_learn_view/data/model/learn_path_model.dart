@@ -14,7 +14,7 @@ class LearnPathModel {
   final int id;
 
   @HiveField(2)
-  final int progressStatus;
+  final int? progressStatus;
 
   @HiveField(3)
   final int trackResourceId;
